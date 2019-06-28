@@ -18,3 +18,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// boutique routes
+Route::get('/add', 'BoutiqueController@newBoutique');
+Route::get('/see', 'BoutiqueController@allBoutique');
+Route::get('/inscriptionform', 'BoutiqueController@inscription');
+Route::post('inscription', 'BoutiqueController@newBoutique');
+
+
+
+
