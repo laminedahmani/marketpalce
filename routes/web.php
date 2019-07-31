@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
+<<<<<<< HEAD
 
 // membre authentication routes
 
@@ -38,14 +39,25 @@ Auth::routes();
   Route::post( 'boutique/register', [ 'as' => 'boutique.register', 'uses' => 'Auth\BoutiqueRegisterController@register' ] );
   Route::post('boutique/logout', 'Auth\AuthBoutiqueLoginController@logout')->name('boutique.logout');
   
-  
-/*
-Route::group( [ 'middleware' => [ 'guest' ] ], function() {
-  Route::get( '/membre', 'MembreController@index' )->name( 'membre' );
-});
-*/
+
 Route::middleware('auth:membre')->get('membre', 'MembreController@index');
  Route::middleware('auth:boutique')->get('boutique', 'BoutiqueController@index');
 
 //backoffice admin
 Route::view('/home', 'home')->middleware('auth');
+
+/*
+=======
+Route::get('/home', 'HomeController@index')->name('home');
+
+// boutique routes
+Route::get('/add', 'BoutiqueController@newBoutique');
+Route::get('/see', 'BoutiqueController@allBoutique');
+Route::get('/inscriptionform', 'BoutiqueController@inscription');
+Route::post('inscription', 'BoutiqueController@newBoutique');
+
+
+
+
+>>>>>>> 2849f0efbef649f2fd55843089cc122eee408790
+*/

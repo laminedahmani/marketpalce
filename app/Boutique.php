@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+<<<<<<< HEAD
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 class Boutique extends Authenticatable
@@ -41,4 +42,11 @@ class Boutique extends Authenticatable
     {
         return $this->hasMany('App\Annonce');
     }
+=======
+/*
+class Boutique extends Model
+{
+    //
+>>>>>>> 2849f0efbef649f2fd55843089cc122eee408790
 }
+*/

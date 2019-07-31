@@ -28,8 +28,8 @@ class CreateBoutiquesTable extends Migration
 			$table->string('secteur_activite');
 			$table->string('presentation');
 			$table->string('url_photo');
-			
-			
+            $table->integer('nbr_vue');
+            $table->integer('pack');
             $table->timestamps();
 			$table->softDeletes();
         });
