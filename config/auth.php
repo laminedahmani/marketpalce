@@ -45,8 +45,23 @@ return [
             'driver' => 'token',
             'provider' => 'users',
         ],
+		 'user' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
+		 'boutique'  => [
+		  'driver'  => 'session',
+		  'provider' => 'boutiques',
+		],
+		'membre'  => [
+		  'driver'  => 'session',
+		  'provider' => 'membres',
+		],	
     ],
 
+
+	
+	
     /*
     |--------------------------------------------------------------------------
     | User Providers
@@ -69,6 +84,14 @@ return [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
+		'boutiques' => [
+        'driver' => 'eloquent',
+        'model'  => App\Boutique::class,
+        ],
+		'membres' => [
+        'driver' => 'eloquent',
+        'model'  => App\Membre::class,
+       ],
 
         // 'users' => [
         //     'driver' => 'database',
@@ -94,6 +117,16 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+		  'membres' => [
+            'provider' => 'membres',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+		  'boutiques' => [
+            'provider' => 'boutiques',
             'table' => 'password_resets',
             'expire' => 60,
         ],
