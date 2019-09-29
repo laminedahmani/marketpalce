@@ -12,17 +12,21 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Auth::routes();
 
-<<<<<<< HEAD
+
+//backoffice admin
+Route::view('/home', 'home')->middleware('auth');
+
+
 
 // membre authentication routes
 
-  Route::get( 'membre/login', 'Auth\AuthMembreLoginController@showLoginForm' );
-  Route::get( 'membre/register', 'Auth\MembreRegisterController@showRegistrationForm' );
+  Route::get( 'membre/login', 'Auth\AuthMangerLoginController@showLoginForm' );
+  Route::get( 'inscription', 'Auth\MembreRegisterController@showRegistrationForm' );
   
   Route::post( 'membre/login', ['as' => 'membre.login', 'uses' => 'Auth\AuthMembreLoginController@membreLogin' ] );
   Route::post( 'membre/register', [ 'as' => 'membre.register', 'uses' => 'Auth\MembreRegisterController@register' ] );
@@ -33,7 +37,7 @@ Auth::routes();
   // boutique authentication routes
 
   Route::get( 'boutique/login', 'Auth\AuthBoutiqueLoginController@showLoginForm' );
-  Route::get( 'boutique/register', 'Auth\BoutiqueRegisterController@showRegistrationForm' );
+//  Route::get( 'boutique/register', 'Auth\BoutiqueRegisterController@showRegistrationForm' );
   
   Route::post( 'boutique/login', ['as' => 'boutique.login', 'uses' => 'Auth\AuthBoutiqueLoginController@boutiqueLogin' ] );
   Route::post( 'boutique/register', [ 'as' => 'boutique.register', 'uses' => 'Auth\BoutiqueRegisterController@register' ] );
@@ -41,23 +45,7 @@ Auth::routes();
   
 
 Route::middleware('auth:membre')->get('membre', 'MembreController@index');
- Route::middleware('auth:boutique')->get('boutique', 'BoutiqueController@index');
-
-//backoffice admin
-Route::view('/home', 'home')->middleware('auth');
-
-/*
-=======
-Route::get('/home', 'HomeController@index')->name('home');
-
-// boutique routes
-Route::get('/add', 'BoutiqueController@newBoutique');
-Route::get('/see', 'BoutiqueController@allBoutique');
-Route::get('/inscriptionform', 'BoutiqueController@inscription');
-Route::post('inscription', 'BoutiqueController@newBoutique');
+Route::middleware('auth:boutique')->get('boutique', 'BoutiqueController@index');
 
 
 
-
->>>>>>> 2849f0efbef649f2fd55843089cc122eee408790
-*/

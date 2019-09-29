@@ -16,20 +16,30 @@ class CreateBoutiquesTable extends Migration
         Schema::create('boutiques', function (Blueprint $table) {
 			$table->increments('id');
 			$table->string('email')->unique();
-			$table->string('password', 60);
+			$table->string('password', 20);
 			$table->rememberToken();
 			$table->string('type_magasin');
 			$table->integer('nbr_annonce_autorise');
 			$table->string('nom');
 			$table->string('prenom');
-			$table->string('ville');
-			$table->double('tel',9, 0);
+			$table->string('nom_magasin');
+			$table->string('tel', 15);
 			$table->string('address');
 			$table->string('secteur_activite');
 			$table->string('presentation');
 			$table->string('url_photo');
             $table->integer('nbr_vue');
-            $table->integer('pack');
+            $table->string('pack', 20);
+			$table->boolean('Activated')->default(false);
+			
+				//foreign id of state wilaya id
+			$table->integer('state_id')->unsigned();
+			$table->foreign('state_id')
+				  ->references('id')
+				  ->on('states')
+				  ->onDelete('restrict')
+				  ->onUpdate('restrict');
+				  
             $table->timestamps();
 			$table->softDeletes();
         });
@@ -42,6 +52,9 @@ class CreateBoutiquesTable extends Migration
      */
     public function down()
     {
+			Schema::table('boutiques', function(Blueprint $table) {
+			$table->dropForeign('boutiques_states_id_foreign');	
+		});
         Schema::dropIfExists('boutiques');
     }
 }

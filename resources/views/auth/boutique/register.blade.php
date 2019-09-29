@@ -1,79 +1,206 @@
 @extends('layouts.app')
-@section('title')
-Enregistrer boutique grossista
-@endsection
+
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Register boutique</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ url('/boutique/register') }}">
-                        {{ csrf_field() }}
+<div class="container  " style="margin-top:20px">
+  
+  <div class="row menu-1" style="margin:200px -100px 200px 70px">
+            <div class="col-md-6">
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
-
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Register
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+              <h1 class="btn btn-lg btn-default col-md-5 center " id="insc-b"  >insceiption حانوتك </h1>
             </div>
+            <div class="col-md-6">
+           <h1 class="btn btn-lg btn-default col-md-5 center align-self-end" id="insc-p">insceiption particulier </h1>
+          </div>
+        
+ </div>
+       <div class="container " id="inscription-b" style='display:none'> 
+      <form   action="{{url('inscription') }}"   method="POST" >
+        {{ csrf_field() }}
+ <div class="form-row">
+          <div class="form-group col-md-6" >
+            <label >nom</label>
+            <input  name='nom' type="text"   class="form-control" placeholder="nom">
+          </div>
+          <div class="form-group col-md-6" >
+            <label for="">prenom</label>
+            <input  name='prenom' type="text " class="form-control"   placeholder="prenom">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputEmail4">Email</label>
+            <input  name='email' type="email" class="form-control" id="inputEmail4" placeholder="Email">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputPassword4">téléphone</label>
+            <input  name='tel' type="tel" class="form-control" id="inputPassword4" placeholder="07807204..">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputPassword4">mot de passe</label>
+            <input  name='pwd' type="password" class="form-control" id="inputPassword4" placeholder="mot de passe">
+          </div>
+           <div class="form-group col-md-6">
+            <label for="inputPassword4">confirmation mot de passe</label>
+            <input type="password" class="form-control" id="inputPassword4" placeholder="reécrit le mot de passe">
+          </div>
+        
+            <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="inputState">wilaya</label>
+              <select  name='wilaya' id="inputState" class="form-control">
+                <option selected>Choose...</option>
+                 <option selected>Choose...</option>
+                  <option selected>Choose...</option>
+                <option>...</option>
+              </select>
+            </div>
+          </div>
+        <div class="form-group col-md-10">
+          <label for="inputAddress">Address</label>
+          <input  name='address' type="text" class="form-control" id="inputAddress" placeholder="250 logement , rue ...">
         </div>
-    </div>
+       
+  </div> 
+ 
+<div class="form-row">
+            <div class="form-group col-md-12">
+              <div class="alert alert-info" role="alert">
+        information de la boutique
+            </div>
+            <div class="form-group col-md-4">
+              <label for="inputState">pack</label>
+              <select name='typepack' id="inputState" class="form-control">
+                <option selected>1</option>
+                 <option selected>2</option>
+                  <option selected>3</option>
+                <option>...</option>
+              </select>
+            </div>
+             <div class="form-group col-md-4">
+              <label for="inputState">type de produits</label>
+              <select name='type_magasin' id="inputState" class="form-control">
+                <option selected>Choose...</option>
+                 <option selected>Choose...</option>
+                  <option selected>Choose...</option>
+                <option>...</option>
+              </select>
+            </div>
+            <label for="inputState">Secteur d'activité</label>
+            <select  name='categorie' id="inputState" class="form-control">
+              <option selected>Choose...</option>
+               <option selected>Choose...</option>
+                <option selected>Choose...</option>
+              <option>...</option>
+            </select>
+          </div>
+         <div class="form-group col-md-10">
+          <label for="">Description de la boutique</label>
+
+          <textarea name='description'  class="form-control" id="" placeholder="notre boutique ..."></textarea>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="">logo/photo</label>
+            <input  name='' type="file" class="form-control-file" id="inputPassword4" >
+          </div>
+         <div class="form-group col-md-7 ">
+            <input  name='submit' type="submit" class="btn btn-primary" value='Crée ma Boutique' >
+          </div> 
+        
+      
+ </div>
+    
 </div>
+
+</form>
+</div>
+
+
+
+<!-- insription particulier  -->
+
+<div class="container " id="inscription-p" style='display:none'> 
+
+      <form  type='POST'  action='{{ url('home')}}'>
+ <div class="form-row">
+          <div class="form-group col-md-6" >
+            <label >nom</label>
+            <input  name='' type="text"  class="form-control" placeholder="nom">
+          </div>
+          <div class="form-group col-md-6" >
+            <label for="">prenom</label>
+            <input  name='' type="text " class="form-control"   placeholder="prenom">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputEmail4">Email</label>
+            <input  name='' type="email" class="form-control" id="inputEmail4" placeholder="Email">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputPassword4">téléphone</label>
+            <input  name='' type="tel" class="form-control" id="inputPassword4" placeholder="07807204..">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputPassword4">mot de passe</label>
+            <input  type="password" class="form-control" id="inputPassword4" placeholder="mot de passe">
+          </div>
+           <div class="form-group col-md-6">
+            <label for="inputPassword4">confirmation mot de passe</label>
+            <input name='' type="password" class="form-control" id="inputPassword4" placeholder="reécrit le mot de passe">
+          </div>
+        
+            <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="inputState">wilaya</label>
+              <select name='' id="inputState" class="form-control">
+                <option selected>Choose...</option>
+                 <option selected>Choose...</option>
+                  <option selected>Choose...</option>
+                <option>...</option>
+              </select>
+            </div>
+          </div>
+        <div class="form-group col-md-10">
+          <label for="inputAddress">Address</label>
+          <input name='' type="text" class="form-control" id="inputAddress" placeholder="250 logement , rue ...">
+        </div>
+        <div class="form-group col-md-7 ">
+            <input name='' type="submit" class="btn btn-primary" value='Crée ma Boutique' >
+          </div>
+  </div> 
+
+
+
+</div>
+
+
+
+</div>
+
+<script >
+
+
+
+$(document).ready(function(){
+  $("#insc-b").click(function(){
+  $("#inscription-p").hide();
+  $("#inscription-b").show();
+  
+ 
+});
+
+$("#insc-p").click(function(){
+  $("#inscription-b").hide();
+  $("#inscription-p").show();
+  
+ 
+});
+});
+
+
+</script>
+
+
+
+
+
+
 @endsection

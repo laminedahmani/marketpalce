@@ -9,7 +9,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Boutique extends Authenticatable
 {
      use Notifiable;
-          
+          /**
+     * The table of this model .
+     *
+     * @var array
+     */
 	protected $table = 'boutiques';
 	protected $guard = 'boutique';
       
@@ -19,7 +23,7 @@ class Boutique extends Authenticatable
      * @var array
      */
     protected $fillable = [
-         'email', 'password','type_magasin','nbr_annonce_autorise','nom','prenom','ville','tel','address','secteur_activite','presentation','url_photo',
+         'email', 'password','type_magasin','nbr_annonce_autorise','nom','prenom','ville','tel','address','secteur_activite','presentation','url_photo','nom_magasin','nbr_vue','pack','Activated'
     ];
 
 	
@@ -36,17 +40,14 @@ class Boutique extends Authenticatable
     protected $dates = ['deleted_at'];
 	
 
-
+    public function state()
+    {
+        return $this->belongsTo('App\State');
+    }
 
 	public function annonces()
     {
         return $this->hasMany('App\Annonce');
     }
-=======
-/*
-class Boutique extends Model
-{
-    //
->>>>>>> 2849f0efbef649f2fd55843089cc122eee408790
+
 }
-*/

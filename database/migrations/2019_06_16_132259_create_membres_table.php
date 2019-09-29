@@ -22,13 +22,22 @@ class CreateMembresTable extends Migration
 			$table->integer('nbr_annonce_autorise');
 			$table->string('nom');
 			$table->string('prenom');
-			$table->string('ville');
-			$table->double('tel',9, 0);
+	        $table->string('nom_magasin');
+			$table->string('tel', 15);
 			$table->string('address');
 			$table->string('secteur_activite');
 			$table->string('presentation');
 			$table->string('url_photo');
 			
+			
+						  
+		//foreign id of state wilaya id
+			$table->integer('state_id')->unsigned();
+			$table->foreign('state_id')
+				  ->references('id')
+				  ->on('states')
+				  ->onDelete('restrict')
+				  ->onUpdate('restrict');		
 			
             $table->timestamps();
 			$table->softDeletes();
@@ -42,6 +51,9 @@ class CreateMembresTable extends Migration
      */
     public function down()
     {
+		Schema::table('membres', function(Blueprint $table) {
+			$table->dropForeign('membres_states_id_foreign');	
+		});
         Schema::dropIfExists('membres');
     }
 }

@@ -15,6 +15,7 @@ class MembreController extends Controller
 	 
     public function index()
     {
+		// espace membre 
          return view('welcome');
     }
 

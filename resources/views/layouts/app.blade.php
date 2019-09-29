@@ -29,7 +29,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        Grossista
                     </a>
                 </div>
 
@@ -85,8 +85,8 @@
                             </li>
 						@endauth
 						@guest
-						    <li><a href="{{ url('/membre/login') }}">Connexion</a></li>
-                            <li><a href="{{ url('/membre/register') }}">Enregistrer</a></li>
+						    <!-- <li><a href="{{ url('/membre/login') }}">Connexion</a></li> -->
+                            <!-- <li><a href="{{ url('/membre/register') }}">Enregistrer</a></li> -->
 					  @endguest
                 
                     </ul>

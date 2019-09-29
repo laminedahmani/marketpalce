@@ -7,7 +7,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Membre extends Authenticatable
 {
 	 use Notifiable;
-          
+          /**
+     * The table of this model .
+     *
+     * @var array
+     */
 	protected $table = 'membres';
 	protected $guard = 'membre';
 
@@ -17,7 +21,7 @@ class Membre extends Authenticatable
      * @var array
      */
     protected $fillable = [
-         'email', 'password','type_magasin','nbr_annonce_autorise','nom','prenom','ville','tel','address','secteur_activite','presentation','url_photo',
+         'email', 'password','type_magasin','nbr_annonce_autorise','nom','prenom','ville','tel','nom_magasin','address','secteur_activite','presentation','url_photo',
     ];
 
 	
@@ -34,6 +38,10 @@ class Membre extends Authenticatable
 
 
 
+	public function state()
+    {
+        return $this->belongsTo('App\State');
+    }
 	public function annonces()
     {
         return $this->hasMany('App\Annonce');
