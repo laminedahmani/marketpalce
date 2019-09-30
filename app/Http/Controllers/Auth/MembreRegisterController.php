@@ -70,7 +70,7 @@ class MembreRegisterController extends Controller
 			$file->move('avatar_membre/', $custom_file_name);  // save img ine the folder Public/Avatars
 			
 		}*/	
-	   $membre=Membre::create($request->except('_method','_token','image')+ ['image' => $custom_file_name]);	
+	   $membre=Membre::create($data->except('_token','image','password')+ ['image' => $custom_file_name,'password' => Hash::make($data['password']),'nbr_annonce_autorise' => 5]);	
 		$this->guard()->login($membre);
 		return redirect()->intended( 'membre' ); 
     }

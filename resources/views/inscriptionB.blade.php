@@ -22,7 +22,7 @@
 
 <!-- insription particulier  -->
 
-<div class="container " id="inscription-p" style='display:none'> 
+<div class="container " id="inscription-p"  style="@if(!$errors->membre->isNotEmpty())display:none @endif" > 
 
 
 	  <form method="POST" action="{{ route('membre.register') }}">
@@ -30,46 +30,46 @@
  <div class="form-row">
           <div class="form-group col-md-6" >
             <label >nom</label>
-            <input  name='nom' type="text"  class="form-control" placeholder="nom">
-			@if ($errors->has('nom'))
-				<span class="help-block">
-				   <strong>{{ $errors->first('nom') }}</strong>
+            <input  name='nom' type="text"  class="form-control" placeholder="nom" value="{{ old('nom') }}">
+			@if ($errors->membre->has('nom'))
+				<span class="alert-danger">
+				   <strong>{{ $errors->membre->first('nom') }}</strong>
 				</span>
 			@endif
           </div>
           <div class="form-group col-md-6" >
             <label for="">prenom</label>
-            <input  name='prenom' type="text " class="form-control"   placeholder="prenom">
-			@if ($errors->has('prenom'))
-				<span class="help-block">
-				   <strong>{{ $errors->first('prenom') }}</strong>
+            <input  name='prenom' type="text " class="form-control"   placeholder="prenom" value="{{ old('prenom') }}">
+			@if ($errors->membre->has('prenom'))
+				<span class="alert-danger">
+				   <strong>{{ $errors->membre->first('prenom') }}</strong>
 				</span>
 			@endif
           </div>
           <div class="form-group col-md-6">
             <label for="inputEmail4">Email</label>
-            <input  name='email' type="email" class="form-control" id="inputEmail4" placeholder="Email">
-			@if ($errors->has('email'))
-				<span class="help-block">
-				   <strong>{{ $errors->first('email') }}</strong>
+            <input  name='email' type="email" class="form-control" id="inputEmail4" placeholder="Email" value="{{ old('email') }}">
+			@if ($errors->membre->has('email'))
+				<span class="alert-danger">
+				   <strong>{{ $errors->membre->first('email') }}</strong>
 				</span>
 			@endif
           </div>
           <div class="form-group col-md-6">
             <label for="inputPassword4">téléphone</label>
-            <input  name='tel' type="tel" class="form-control" id="inputPassword4" placeholder="07807204..">
-			@if ($errors->has('tel'))
-				<span class="help-block">
-				   <strong>{{ $errors->first('tel') }}</strong>
+            <input  name='tel' type="tel" class="form-control" id="inputPassword4" placeholder="07807204.." value="{{ old('tel') }}">
+			@if ($errors->membre->has('tel'))
+				<span class="alert-danger">
+				   <strong>{{ $errors->membre->first('tel') }}</strong>
 				</span>
 			@endif
           </div>
           <div class="form-group col-md-6">
             <label for="inputPassword4">mot de passe</label>
             <input  type="password" class="form-control" id="inputPassword4" placeholder="mot de passe">
-			@if ($errors->has('password'))
-				<span class="help-block">
-				   <strong>{{ $errors->first('password') }}</strong>
+			@if ($errors->membre->has('password'))
+				<span class="alert-danger">
+				   <strong>{{ $errors->membre->first('password') }}</strong>
 				</span>
 			@endif
           </div>
@@ -82,9 +82,9 @@
             <div class="form-group col-md-4">
               <label for="inputState">wilaya</label>
                 {!! Form::select('state_id',$states, null, array('class' => 'form-control','id' => 'state','placeholder' => 'Sélectionner votre wilaya') ) !!}
-				@if ($errors->has('state_id'))
-				<span class="help-block">
-				   <strong>{{ $errors->first('state_id') }}</strong>
+				@if ($errors->membre->has('state_id'))
+				<span class="alert-danger">
+				   <strong>{{$errors->membre->first('state_id') }}</strong>
 				</span>
 			@endif
             </div>
@@ -92,7 +92,7 @@
           </div>
         <div class="form-group col-md-10">
           <label for="inputAddress">Address</label>
-          <input name='address' type="text" class="form-control" id="inputAddress" placeholder="250 logement , rue ...">
+          <input name='address' type="text" class="form-control" id="inputAddress" placeholder="250 logement , rue ..." value="{{ old('address') }}">
 		
         </div>
         <div class="form-group col-md-7 ">

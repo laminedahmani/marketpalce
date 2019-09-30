@@ -26,9 +26,9 @@ Route::view('/home', 'home')->middleware('auth');
 // membre authentication routes
 
   Route::get( 'membre/login', 'Auth\AuthMangerLoginController@showLoginForm' );
-  Route::get( 'inscription', 'Auth\MembreRegisterController@showRegistrationForm' );
+  Route::get( 'inscription', 'Auth\MembreRegisterController@showRegistrationForm' )->name('inscription');;
   
-  Route::post( 'membre/login', ['as' => 'membre.login', 'uses' => 'Auth\AuthMembreLoginController@membreLogin' ] );
+  Route::post( 'inscription', ['as' => 'membre.login', 'uses' => 'Auth\AuthMembreLoginController@membreLogin' ] );
   Route::post( 'membre/register', [ 'as' => 'membre.register', 'uses' => 'Auth\MembreRegisterController@register' ] );
   Route::post('membre/logout', 'Auth\AuthMembreLoginController@logout')->name('membre.logout');
   

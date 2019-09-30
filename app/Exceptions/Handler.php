@@ -59,14 +59,14 @@ class Handler extends ExceptionHandler
 				? response()->json([
 					  'message' => $exception->getMessage()
 				], 401)
-				: redirect()->guest(route('membre.login'));
+				: redirect()->guest(route('inscription'));
 		}
 			if (in_array('boutique', $exception->guards())) {
 			return $request->expectsJson()
 				? response()->json([
 					  'message' => $exception->getMessage()
 				], 401)
-				: redirect()->guest(route('boutique.login'));
+				: redirect()->guest(route('inscription'));
 		}
 
 		return $request->expectsJson()

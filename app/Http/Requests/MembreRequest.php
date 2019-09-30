@@ -6,6 +6,8 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 class MembreRequest extends FormRequest
 {
+	//customer array error membre
+	protected $errorBag = 'membre';
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -25,7 +27,7 @@ class MembreRequest extends FormRequest
     {
         return [
 		    'email' => 'unique:membres,email,'.$this->id,
-			'password' => 'required|string|min:6|confirmed',
+		//	'password' => 'required|min:6|confirmed',
             //'type_magasin' => 'required',
 			'nom' => 'required|max:20',
 			'prenom' => 'required|max:20',

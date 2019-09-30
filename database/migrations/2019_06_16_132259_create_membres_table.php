@@ -18,16 +18,16 @@ class CreateMembresTable extends Migration
 			$table->string('email')->unique();
 			$table->string('password', 60);
 			$table->rememberToken();
-			$table->string('type_magasin');
+			$table->string('type_magasin')->nullable();
 			$table->integer('nbr_annonce_autorise');
 			$table->string('nom');
 			$table->string('prenom');
 	        $table->string('nom_magasin');
 			$table->string('tel', 15);
 			$table->string('address');
-			$table->string('secteur_activite');
-			$table->string('presentation');
-			$table->string('url_photo');
+			$table->string('secteur_activite')->nullable();
+			$table->string('presentation')->nullable();
+			$table->string('url_photo')->nullable();
 			
 			
 						  

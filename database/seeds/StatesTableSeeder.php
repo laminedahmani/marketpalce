@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class StatesTableSeeder extends Seeder 
+class StatesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +11,7 @@ class StatesTableSeeder extends Seeder
      */
     public function run()
     {
-				// `algeria-cities`.`wilayas`
+        	// `algeria-cities`.`wilayas`
 		$wilayas = array(
 		  array('id' => '1','code' => '1','nom' => 'Adrar'),
 		  array('id' => '2','code' => '2','nom' => 'Chlef'),

@@ -18,12 +18,12 @@
        @auth("boutique")
       <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
-                                    {{ Auth::guard('boutique')->user()->email }} <span class="caret"></span>
+                                    {{ Auth::guard('boutique')->user()->nom }}    {{ Auth::guard('boutique')->user()->prenom }}<span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a href="{{ route('logout') }}"
+                                        <a href="{{ route('boutique.logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Logout
@@ -37,6 +37,31 @@
                             </li>
 
                               @endauth
+							  
+							       @auth("membre")
+      <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
+                                    {{ Auth::guard('membre')->user()->nom }}  {{ Auth::guard('membre')->user()->prenom }} <span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="{{ route('membre.logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form-2').submit();">
+                                            Logout
+                                        </a>
+
+                                        <form id="logout-form-2" action="{{ route('membre.logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+
+                              @endauth
+    </ul>  
+							  
     </ul>
 
 
