@@ -75,7 +75,7 @@ class AuthMembreLoginController extends Controller
 
         $request->session()->invalidate();
 
-        return redirect()->route('/');
+        return redirect()->route('index');
     }
 	
 	/**

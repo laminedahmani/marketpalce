@@ -16,19 +16,19 @@ class CreateBoutiquesTable extends Migration
         Schema::create('boutiques', function (Blueprint $table) {
 			$table->increments('id');
 			$table->string('email')->unique();
-			$table->string('password', 20);
+			$table->string('password', 255);
 			$table->rememberToken();
 			$table->string('type_magasin');
-			$table->integer('nbr_annonce_autorise');
+			$table->integer('nbr_annonce_autorise')->nullable();
 			$table->string('nom');
 			$table->string('prenom');
 			$table->string('nom_magasin');
 			$table->string('tel', 15);
-			$table->string('address');
-			$table->string('secteur_activite');
-			$table->string('presentation');
-			$table->string('url_photo');
-            $table->integer('nbr_vue');
+			$table->string('address')->nullable();
+			$table->string('secteur_activite')->nullable();
+			$table->string('presentation')->nullable();
+			$table->string('url_photo')->nullable();
+            $table->integer('nbr_vue')->nullable();
             $table->string('pack', 20);
 			$table->boolean('Activated')->default(false);
 			

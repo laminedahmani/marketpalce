@@ -3,7 +3,6 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-<<<<<<< HEAD
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 class Boutique extends Authenticatable
@@ -23,7 +22,7 @@ class Boutique extends Authenticatable
      * @var array
      */
     protected $fillable = [
-         'email', 'password','type_magasin','nbr_annonce_autorise','nom','prenom','ville','tel','address','secteur_activite','presentation','url_photo','nom_magasin','nbr_vue','pack','Activated'
+         'email','password','type_magasin','nbr_annonce_autorise','nom','prenom','state_id','tel','address','secteur_activite','presentation','url_photo','nom_magasin','nbr_vue','pack','Activated'
     ];
 
 	
