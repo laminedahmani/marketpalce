@@ -12,6 +12,7 @@ class StatesTableSeeder extends Seeder
     public function run()
     {
         	// `algeria-cities`.`wilayas`
+    	DB::table('states')->delete();
 		$wilayas = array(
 		  array('id' => '1','code' => '1','nom' => 'Adrar'),
 		  array('id' => '2','code' => '2','nom' => 'Chlef'),

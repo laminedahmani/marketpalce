@@ -169,7 +169,7 @@
 										      </ul>
 										    </li>
 										    <li class="dropdown-submenu">
-										      <a href="#">Sente et médecine<span class='tri'> &#x25B6; </span></a>
+										      <a href="#">Sante et médecine<span class='tri'> &#x25B6; </span></a>
 										      <ul class="dropdown-menu">
 												<li><a href="#">•	اعشاب طبية</a></li>
 										        <li><a href="#">•	Logiciel médicaux</a></li>
