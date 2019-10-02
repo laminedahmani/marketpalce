@@ -33,7 +33,7 @@ class CategoriesTableSeeder extends Seeder
 		  array('id' => '18','name' => 'Sport et Loisir'),
 		  array('id' => '19','name' => 'Jeux et jouets'),
 		  array('id' => '20','name' => 'Maison et Jardin'),
-		  array('id' => '21','name' => 'âtiment et construction'),
+		  array('id' => '21','name' => 'bâtiment et construction'),
 		  array('id' => '22','name' => 'Informatique'),
 		  array('id' => '23','name' => 'Electroménager'),
 		  array('id' => '24','name' => 'Sécurité et protection'),

@@ -16,20 +16,24 @@
 </div> 
 <div class="panel-body">
   
-<form action="designer-finish.html" class="form-horizontal" role="form">
+<form action=""  method="POST" class="form-horizontal" role="form">
 
-@
+
 
 <div class="form-group">
     <label for="cat" class="col-md-3 control-label">Catégorie</label>
     <div class="col-sm-6">
-   <select class="form-control" name='wilaya'>
-	<option value="">choisir</option>
-	<option value="texnolog2"> 2</option>
-	<option value="texnolog3"> 3</option>
-   </select>
+   {!! Form::select('catgorie',$categories, null, array('class' => 'form-control','id' => 'categorie','placeholder' => 'Sélectionner votre categorie') ) !!}
     </div>
+
   </div> <!-- form-group // -->
+  <div class="form-group">
+    <label for="cat" class="col-md-3 control-label">Sous Catégorie</label>
+    <div class="col-sm-6">
+
+    </div>
+    
+  </div> 
   <hr>
 <div class="form-group">
 	<label for="name" class="col-sm-3 control-label">Type</label>
@@ -40,6 +44,7 @@
 	<label class="radio-inline">
 	  <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="2"> Détails
 	</label>
+
 	</div>
 </div> <!-- form-group // -->
 
@@ -115,11 +120,11 @@
     <label class="col-sm-3 control-label">LES PRIX en DA</label>
     <div class="col-sm-3"> 
 	  <label class="control-label small" for="date_start">Prix</label>
-	  <input type="text" class="form-control" name="date_start" id="date_start" placeholder="2200">
+	  <input type="text" class="form-control" name="prix" id="date_start" placeholder="2200">
     </div>
 	<div class="col-sm-3">   
-	  <label class="control-label small" for="date_finish">Prix de lévraison</label>
-	  <input type="text" class="form-control" name="date_finish" id="date_finish" placeholder="600">
+	  <label class="control-label small" for="date_finish">Prix du solde</label>
+	  <input type="text" class="form-control" name="prix_solde" id="date_finish" placeholder="600">
     </div>
   </div> <!-- form-group // -->
   <div class="form-group">

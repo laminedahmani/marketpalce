@@ -17,14 +17,24 @@ class CreateAnnoncesTable extends Migration
             $table->increments('id');
 			$table->string('titre')->nullable();
 			$table->string('description')->nullable();
-			$table->string('type_annonce')->nullable();
+			$table->string('type_annonce')->nullable(); // grop , details 
 			$table->decimal('prix',15, 2)->nullable();
 			$table->integer('quantite')->nullable();
-		    $table->decimal('prix_livraison',15, 2)->nullable();
-			$table->integer('deli_livraison')->nullable();
+		    //$table->decimal('prix_livraison',15, 2)->nullable(); to comfirme
+			//$table->integer('deli_livraison')->nullable();
 			$table->decimal('prix_solde',15, 2)->nullable();
 			$table->boolean('Activated')->default(false);
 		    $table->integer('nbr_vue');
+		    // fields added recently 
+		    
+		    $table->string('marque')->nullable(); //voiture , informatique ..ext
+		    $table->string('anne')->nullable(); // voiture 
+		    $table->string('taille')->nullable(); // vetement 
+		    $table->string('modele')->nullable(); // vetment , voiture 
+		    $table->string('etat')->nullable(); // all categories
+		    $table->string('couleur')->nullable(); // voiture , vetement
+		    $table->string('img_principale')->nullable(); 
+		    $table->string('autre_image')->nullable();  // limité a 5
 			//foreign id of membre
 			$table->integer('membre_id')->unsigned()->nullable();
 			$table->foreign('membre_id')

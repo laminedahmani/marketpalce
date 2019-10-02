@@ -16,7 +16,9 @@ Route::get('/', function () {
 })->name('index');;;
 
 Auth::routes();
-
+ Route::get('addproduct', function () {
+    return view('/product.addproduct');
+})->name('add');;;
 
 //backoffice admin
 Route::view('/home', 'home')->middleware('auth');
@@ -47,5 +49,6 @@ Route::view('/home', 'home')->middleware('auth');
 Route::middleware('auth:membre')->get('membre', 'MembreController@index')->name('membre');
 Route::middleware('auth:boutique')->get('boutique', 'BoutiqueController@index')->name('boutique');
 
-
+// Annonce 
+Route::get( 'ajout/produits', 'AnnonceController@show' )->name('ajout.produits');;
 
