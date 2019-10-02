@@ -16,7 +16,7 @@ class CreateMembresTable extends Migration
         Schema::create('membres', function (Blueprint $table) {
           	$table->increments('id');
 			$table->string('email')->unique();
-			$table->string('password', 60);
+			$table->string('password', 255);
 			$table->rememberToken();
 			$table->string('type_magasin')->nullable();
 			$table->integer('nbr_annonce_autorise');

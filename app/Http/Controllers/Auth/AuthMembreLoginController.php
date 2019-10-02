@@ -36,6 +36,7 @@ class AuthMembreLoginController extends Controller
     {
        
 		$this->middleware('guest:membre')->except('logout');
+		$this->middleware('guest:boutique')->except('logout');;
            
     }
 	 /**
@@ -44,7 +45,7 @@ class AuthMembreLoginController extends Controller
      * @return \Illuminate\Http\Response
      */
 	     public function showLoginForm() {
-         return view( 'auth.membre.login', ['url' => 'membre'] );
+         	return view( 'connexionB');
         }
 		
  public function membreLogin( Request $request ) {
@@ -59,8 +60,16 @@ class AuthMembreLoginController extends Controller
     ])) {
      
 	   return redirect()->intended( 'membre' ); 
-    } else {
-      return view( 'auth.membre.login' )->withErrors( [ 'email' => 'Authentication failed' ] );
+    }
+   if( Auth::guard( 'boutique' )->attempt( [
+      'email' => $request->input( 'email' ),
+      'password' => $request->input( 'password' ),
+    ])) {
+     
+	   return redirect()->route( 'boutique' ); 
+    }
+	else {
+      return view( 'connexionB' )->withErrors( [ 'email' => 'Authentication failed' ] );
     }
   }
      /**
@@ -75,7 +84,7 @@ class AuthMembreLoginController extends Controller
 
         $request->session()->invalidate();
 
-        return redirect()->route('/');
+        return redirect()->route('index');
     }
 	
 	/**

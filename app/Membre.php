@@ -21,7 +21,7 @@ class Membre extends Authenticatable
      * @var array
      */
     protected $fillable = [
-         'email', 'password','type_magasin','nbr_annonce_autorise','nom','prenom','ville','tel','nom_magasin','address','secteur_activite','presentation','url_photo',
+         'email','password','type_magasin','nbr_annonce_autorise','nom','prenom','state_id','tel','nom_magasin','address','secteur_activite','presentation','url_photo',
     ];
 
 	

@@ -79,7 +79,7 @@ class AuthBoutiqueLoginController extends Controller
 
         $request->session()->invalidate();
 
-        return redirect()->route('boutique.login');
+        return redirect()->route('index');
     }
 	
 	/**

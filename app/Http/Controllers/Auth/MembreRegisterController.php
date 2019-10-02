@@ -56,12 +56,6 @@ class MembreRegisterController extends Controller
   
   protected function register(MembreRequest $data)
     {
-		 /*$this->validate( $data, [
-			'name' => 'required|string|max:255',
-			'email' => 'required|string|email|max:255|unique:membres',
-			'password' => 'required|string|min:6|confirmed',
-		]);*/
-	 
 			//check if is Avatar img exist
 		$custom_file_name ="";
 		/*if ($request->hasFile('image')) {
@@ -70,7 +64,18 @@ class MembreRegisterController extends Controller
 			$file->move('avatar_membre/', $custom_file_name);  // save img ine the folder Public/Avatars
 			
 		}*/	
-	   $membre=Membre::create($data->except('_token','image','password')+ ['image' => $custom_file_name,'password' => Hash::make($data['password']),'nbr_annonce_autorise' => 5]);	
+	    $membre=Membre::create([
+            'nom' => $data['nom'],
+            'email' => $data['email'],
+			'prenom' => $data['prenom'],
+			'tel' => $data['tel'],
+			'state_id' => $data['state_id'],
+			'address' => $data['address'],
+			'nbr_annonce_autorise' => 5,
+            'password' => Hash::make($data['password']),
+        ]);
+		
+	  
 		$this->guard()->login($membre);
 		return redirect()->intended( 'membre' ); 
     }

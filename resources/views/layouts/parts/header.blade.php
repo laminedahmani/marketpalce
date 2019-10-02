@@ -14,7 +14,7 @@
                         <li><i class="fa fa-building"></i><a href=" {{ url('inscription') }}"> Crée Hanoutek / s'inscrire</a></li>
 						@if(Auth::guest())
                          <li class="dropdown">
-					        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-sign-in" aria-hidden="true"></i>Se connecter
+					        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-sign-in" aria-hidden="true"></i><a href="{{ url('connexion') }}">Se connecter</a>
 					        <span class="caret"></span></a>
 					        <ul class="dropdown-menu" style='background-color:black'>
 					          <li><a href="{{ url('boutique/login') }}">boutique</a></li>

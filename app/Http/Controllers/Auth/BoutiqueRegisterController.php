@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
+use App\Http\Requests\BoutiqueRequest;
 class BoutiqueRegisterController extends Controller
 {
 	   use RegistersUsers;
@@ -53,17 +54,30 @@ class BoutiqueRegisterController extends Controller
      */
 
 
-  protected function register(Request $data)
+  protected function register(BoutiqueRequest $data)
     {
-		 $this->validate( $data, [
-			'name' => 'required|string|max:255',
-			'email' => 'required|string|email|max:255|unique:boutiques',
-			'password' => 'required|string|min:6|confirmed',
-		]);
+		//check if is Avatar img exist
+		$custom_file_name ="";
+		if ($data->hasFile('logo')) {
+			$file = $data->file('logo');
+			$custom_file_name = time().'-'.$data->file('logo')->getClientOriginalName(); // customer the name of img uploded 
+			$file->move('avatar_boutique/', $custom_file_name);  // save img ine the folder Public/Avatars
+		   }
 	
        $boutique=Boutique::create([
-            'nom' => $data['name'],
-            'email' =>  $data['email'],
+             'nom' => $data['nom'],
+            'email' => $data['email'],
+			'prenom' => $data['prenom'],
+			'tel' => $data['tel'],
+			'state_id' => $data['state_id'],
+			'address' => $data['address'],
+			'nbr_annonce_autorise' => 5,
+			'secteur_activite' => $data['secteur_activite'],
+			'pack' => $data['pack'],
+			'nom_magasin' => $data['nom_magasin'],
+			'type_magasin' => $data['type_magasin'],
+			'presentation' => $data['presentation'],		
+			'url_photo' => $custom_file_name,	
             'password' => Hash::make($data['password']),
         ]);
 		

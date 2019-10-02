@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-<<<<<<< HEAD
+//<<<<<<< HEAD
 
 class BoutiqueController extends Controller
 {
@@ -14,7 +14,7 @@ class BoutiqueController extends Controller
      */
     public function index()
     {
-         return view('welcome');
+         return view('boutique.homeboutique');
     }
 
     /**
@@ -82,6 +82,7 @@ class BoutiqueController extends Controller
     {
         //
     }
+}	
 /*	
 =======
 use App\Boutique;
