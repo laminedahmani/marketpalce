@@ -5,8 +5,8 @@
 
 
 <div class="container  " style="margin-top:20px">
-  
-  <div class="row menu-1" style="margin:200px -100px 200px 70px">
+    
+  <div class="row menu-1" style="@if((!$errors->boutique->isNotEmpty()) & (!$errors->membre->isNotEmpty()) ) margin:200px -100px 200px 70px @else  margin-bottom:20px,margin-top:20px @endif">
             <div class="col-md-6">
 
               <h1 class="btn btn-lg btn-default col-md-5 center " id="insc-b"  >insceiption حانوتك </h1>
@@ -18,14 +18,14 @@
  </div>
 <!-- insription boutique  -->
   <div class="container " id="inscription-b" style='@if(!$errors->boutique->isNotEmpty())display:none @endif'> 
-      <form   method="POST" action="{{ url('/boutique/register') }}"  >
+      <form   method="POST" action="{{ url('/boutique/register') }}"  enctype="multipart/form-data">
         {{ csrf_field() }}
         
  <div class="form-row">
   
           <div class="form-group col-md-6" >
             <label >nom</label>
-            <input  name='nom' type="text"   class="form-control" placeholder="nom">
+            <input  name='nom' type="text"   class="form-control" placeholder="nom" value="{{ old('nom') }}">
 			@if ($errors->boutique->has('nom'))
 				<span class="alert-danger">
 				   <strong>{{ $errors->boutique->first('nom') }}</strong>
@@ -34,7 +34,7 @@
           </div>
           <div class="form-group col-md-6" >
             <label for="">prenom</label>
-            <input  name='prenom' type="text " class="form-control"   placeholder="prenom">
+            <input  name='prenom' type="text " class="form-control"   placeholder="prenom" value="{{ old('prenom') }}">
 			@if ($errors->boutique->has('prenom'))
 				<span class="alert-danger">
 				   <strong>{{ $errors->boutique->first('prenom') }}</strong>
@@ -44,7 +44,7 @@
         
           <div class="form-group col-md-6">
             <label for="inputEmail4">Email</label>
-            <input  name='email' type="email" class="form-control" id="inputEmail4" placeholder="Email">
+            <input  name='email' type="email" class="form-control" id="inputEmail4" placeholder="Email" value="{{ old('email') }}">
 			@if ($errors->boutique->has('email'))
 				<span class="alert-danger">
 				   <strong>{{ $errors->boutique->first('email') }}</strong>
@@ -55,7 +55,7 @@
 
           <div class="form-group col-md-6">
             <label for="">téléphone</label>
-            <input  name='tel' class="form-control" id="" placeholder="07807204..">
+            <input  name='tel' class="form-control" id="" placeholder="07807204.." value="{{ old('tel') }}">
 			@if ($errors->boutique->has('tel'))
 				<span class="alert-danger">
 				   <strong>{{ $errors->boutique->first('tel') }}</strong>
@@ -95,7 +95,7 @@
           </div>
 		  <div class="form-group col-md-6">
             <label for="inputPassword4">Nom du magasin</label>
-            <input name="nom_magasin" type="password_confirmation" class="form-control" id="inputPassword4" placeholder="Nom du magasin...">
+            <input name="nom_magasin" type="text" class="form-control" id="inputPassword4" placeholder="Nom du magasin..." value="{{ old('nom_magasin') }}">
 			@if ($errors->boutique->has('nom_magasin'))
 				<span class="alert-danger">
 				   <strong>{{ $errors->boutique->first('nom_magasin') }}</strong>
@@ -107,7 +107,7 @@
   </div> 
    <div class="form-group col-md-10">
           <label for="inputAddress">Address</label>
-          <input  name='address' type="text" class="form-control" id="inputAddress" placeholder="250 logement , rue ...">
+          <input  name='address' type="text" class="form-control" id="inputAddress" placeholder="250 logement , rue ..." value="{{ old('address') }}">
         </div>
 <div class="form-row">
             <div class="form-group col-md-12">
@@ -146,7 +146,7 @@
          <div class="form-group col-md-10">
           <label for="">Description de la boutique</label>
 
-          <textarea name='presentation'  class="form-control" id="" placeholder="notre boutique ..."></textarea>
+          <textarea name='presentation'  class="form-control" id="" placeholder="notre boutique ...">{{ old('presentation') }}</textarea>
         </div>
         <div class="form-group col-md-6">
             <label for="">logo/photo</label>
@@ -269,7 +269,8 @@ $(document).ready(function(){
   $("#inscription-b").show();
   $('.menu-1').css({
         'margin-bottom': '20px',
-        'margin-top': '20px'
+        'margin-top': '20px',
+	
     });
  
 });
@@ -279,7 +280,8 @@ $("#insc-p").click(function(){
   $("#inscription-p").show();
    $('.menu-1').css({
         'margin-bottom': '20px',
-        'margin-top': '20px'
+        'margin-top': '20px',
+		
     });
   
  

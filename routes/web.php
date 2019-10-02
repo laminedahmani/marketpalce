@@ -25,10 +25,10 @@ Route::view('/home', 'home')->middleware('auth');
 
 // membre authentication routes
 
-  Route::get( 'membre/login', 'Auth\AuthMangerLoginController@showLoginForm' );
+  Route::get( 'connexion', 'Auth\AuthMembreLoginController@showLoginForm' );
   Route::get( 'inscription', 'Auth\MembreRegisterController@showRegistrationForm' )->name('inscription');;
   
-  Route::post( 'inscription', ['as' => 'membre.login', 'uses' => 'Auth\AuthMembreLoginController@membreLogin' ] );
+  Route::post( 'membre/login','Auth\AuthMembreLoginController@membreLogin' )->name('membre.login');
   Route::post( 'membre/register', [ 'as' => 'membre.register', 'uses' => 'Auth\MembreRegisterController@register' ] );
   Route::post('membre/logout', 'Auth\AuthMembreLoginController@logout')->name('membre.logout');
   
@@ -36,7 +36,7 @@ Route::view('/home', 'home')->middleware('auth');
   
   // boutique authentication routes
 
-  Route::get( 'boutique/login', 'Auth\AuthBoutiqueLoginController@showLoginForm' );
+  //Route::get( 'boutique/login', 'Auth\AuthBoutiqueLoginController@showLoginForm' );
 //  Route::get( 'boutique/register', 'Auth\BoutiqueRegisterController@showRegistrationForm' );
   
   Route::post( 'boutique/login', ['as' => 'boutique.login', 'uses' => 'Auth\AuthBoutiqueLoginController@boutiqueLogin' ] );
@@ -44,8 +44,8 @@ Route::view('/home', 'home')->middleware('auth');
   Route::post('boutique/logout', 'Auth\AuthBoutiqueLoginController@logout')->name('boutique.logout');
   
 
-Route::middleware('auth:membre')->get('membre', 'MembreController@index');
-Route::middleware('auth:boutique')->get('boutique', 'BoutiqueController@index');
+Route::middleware('auth:membre')->get('membre', 'MembreController@index')->name('membre');
+Route::middleware('auth:boutique')->get('boutique', 'BoutiqueController@index')->name('boutique');
 
 
 

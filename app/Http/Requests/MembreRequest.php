@@ -26,7 +26,7 @@ class MembreRequest extends FormRequest
     public function rules()
     {
         return [
-		    'email' => 'unique:membres,email,'.$this->id,
+		    'email' => 'email|required|unique:membres,email,'.$this->id,
 		   	'password' => 'required|min:6|confirmed',
 			'password_confirmation' => 'required',
 			//'type_magasin' => 'required',
