@@ -71,7 +71,7 @@ class SubCategoriesTableSeeder extends Seeder
         array('id'=>'47','name'=>'Chaussures pour bébé et enfants','categorie_id'=>'14'),
         array('id'=>'48','name'=>'Chaussures de sport','categorie_id'=>'14'),
 
-        array('id'=>'49','name'=>'Sacs a main et Bandoulier, Portefeuilles et pochette','categorie_id'=>''),
+        array('id'=>'49','name'=>'Sacs a main et Bandoulier, Portefeuilles et pochette','categorie_id'=>'15'),
         array('id'=>'50','name'=>'Sacs a dos, Sacs de sport et loisir','categorie_id'=>'15'),
         array('id'=>'51','name'=>'Valise, Sacs de voyage','categorie_id'=>'15'),
 
@@ -106,7 +106,7 @@ class SubCategoriesTableSeeder extends Seeder
         array('id'=>'76','name'=>'Module préfabriqué (chalet)','categorie_id'=>'21'),
         array('id'=>'77','name'=>'Cuisine équipe','categorie_id'=>'21'),
         array('id'=>'78','name'=>'Port et fenêtre et Accessoire','categorie_id'=>'21'),
-        array('id'=>'79','name'=>'مواد البناء','categorie_id'=>'2&'),
+        array('id'=>'79','name'=>'مواد البناء','categorie_id'=>'21'),
         array('id'=>'80','name'=>'Matériaux de finition','categorie_id'=>'21'),
         array('id'=>'81','name'=>'Pierre et matériaux de carrière','categorie_id'=>'21'),
 
