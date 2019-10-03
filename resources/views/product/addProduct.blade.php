@@ -113,7 +113,7 @@
   <div class="form-group">
     <label for="qty" class="col-sm-3 control-label">Quantité</label>
     <div class="col-sm-3">
-   <input type="number" class="form-control" name="qty" id="qty" placeholder="1">
+   <input type="number" class="form-control" name="quantit" id="qty" placeholder="1">
     </div>
   </div> <!-- form-group // -->
   <div class="form-group">
@@ -130,7 +130,7 @@
   <div class="form-group">
     <label for="name" class="col-sm-3 control-label">Les Image</label>
     <div class="col-sm-3">
-      <label class="control-label small" for="file_img">image principale</label> <input type="file" name="file_img">
+      <label class="control-label small" for="file_img">image principale</label> <input type="file" name="img_principale">
     </div>
 	<div class="col-sm-3">
       <label class="control-label small" for="file_img">Autre images</label>  <input type="file" name="file_archive">

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Membre;
 use App\State;
+use App\Categorie;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -40,8 +41,9 @@ class MembreRegisterController extends Controller
 
 	   public function showRegistrationForm() {
 			// get array of all state code, name of state
+            $categories = Categorie::all(['id', 'name'])->pluck('name', 'id');
 			$states = State::all(['code', 'nom'])->pluck('nom', 'code');
-			return view( 'inscriptionB',['states'=>$states] );
+			return view( 'inscriptionB',['states'=>$states ,'categories'=>$categories] );
 			  
         }
 	

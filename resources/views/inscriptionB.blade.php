@@ -133,15 +133,15 @@
 				</span>
 			@endif
             </div>
-			
+			<div class="form-group col-md-4">
             <label for="inputState">Secteur d'activité</label>
-			 {!! Form::select('secteur_activite',["T1"=>"Type-1","T2"=>"Type-2"],null, array('class' => 'form-control','id' => 'secteur_activite','placeholder' => "Type d'activité") ) !!}
+			 {!! Form::select('secteur_activite',$categories,null, array('class' => 'form-control','id' => 'secteur_activite','placeholder' => "Type d'activité") ) !!}
 			 @if ($errors->boutique->has('secteur_activite'))
 				<span class="alert-danger">
 				   <strong>{{ $errors->boutique->first('secteur_activite') }}</strong>
 				</span>
 			@endif
-        
+        </div>
           </div>
          <div class="form-group col-md-10">
           <label for="">Description de la boutique</label>

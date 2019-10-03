@@ -16,9 +16,7 @@ Route::get('/', function () {
 })->name('index');;;
 
 Auth::routes();
- Route::get('addproduct', function () {
-    return view('/product.addproduct');
-})->name('add');;;
+ 
 
 //backoffice admin
 Route::view('/home', 'home')->middleware('auth');
