@@ -22,15 +22,12 @@ class CreateMembresTable extends Migration
 			$table->integer('nbr_annonce_autorise');
 			$table->string('nom');
 			$table->string('prenom');
-	        $table->string('nom_magasin');
+	        $table->string('nom_magasin')->nullable();
 			$table->string('tel', 15);
 			$table->string('address');
 			$table->string('secteur_activite')->nullable();
 			$table->string('presentation')->nullable();
-			$table->string('url_photo')->nullable();
-			
-			
-						  
+			$table->string('url_photo')->nullable();				  
 		//foreign id of state wilaya id
 			$table->integer('state_id')->unsigned();
 			$table->foreign('state_id')

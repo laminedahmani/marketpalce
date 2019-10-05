@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\State;
 use App\Categorie;
 use App\SubCategorie;
+use App\Http\Requests;
+
+use DB;
 class AnnonceController extends Controller
 {
    
@@ -44,11 +47,21 @@ public function index()
     public function show()
     {
     $states = State::all(['code', 'nom'])->pluck('nom', 'code');
-    $categories = Categorie::all(['id', 'name'])->pluck('name', 'id');
+    $categories = Categorie::all(['id', 'name']);
 
-    $subcategories = SubCategorie::all(['id','Categorie_id', 'name'])->pluck('name','id', 'Categorie_id');
-			return view( 'product/addproduct',['categories'=>$categories , 'subCategorie'=>$subcategories ,'states'=>$states ]);
+    //$subcategories = SubCategorie::all(['id','Categorie_id', 'name']);
+    
+			return view( 'product/addproduct',['categories'=>$categories ,'states'=>$states ]);
 			     
+    }
+
+    public function getSubcatList(Request $request)
+    {
+    
+            
+            $subcategories =SubCategorie::where('categorie_id','=',$request->cat_id)->get();
+        return response()->json($subcategories);
+
     }
 
     /**

@@ -1,18 +1,26 @@
+  
  <nav class="navbar navbar-inverse">  
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="{{ url('/')}}">Grossita</a>
     </div>
 
-              
+
+        
           
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      
-      <li><a href="{{ url('boutique/infopersonnelle')}}" >Mes information</a></li>
+      @auth("boutique")
+      <li class="active"><a href="   {{ url('boutique') }} ">ma boutique</a></li>
+        <li><a href="{{ url('modifier/boutique/id=1')}}" >Mes information</a></li>
+      @endauth
+      @auth("membre")
+      <li class="active"><a href="   {{ url('membre') }} ">ma boutique</a></li>
+       <li><a href="{{ url('modifier/membre/id=1')}}" >Mes information</a></li>
+      @endauth
+     
     </ul>
     <ul class="nav navbar-nav">
-       <li><a href="{{ url('boutique/addannonce')}}">Ajouté une annonce</a></li>
+       <li><a href="{{ url('ajout/produits')}}">Ajouté une annonce</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
        @auth("boutique")
@@ -49,7 +57,7 @@
                                         <a href="{{ route('membre.logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form-2').submit();">
-                                            Logout
+                                            Déconnecter
                                         </a>
 
                                         <form id="logout-form-2" action="{{ route('membre.logout') }}" method="POST" style="display: none;">

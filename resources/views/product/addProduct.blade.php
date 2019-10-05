@@ -1,15 +1,7 @@
 @extends('layouts.dash')
 
 @section('content')
-
-
-
-
-
-
-
 <div class="container">
-  
   <section class="panel panel-default">
 <div class="panel-heading"> 
 <h3 class="panel-title">Crée votre annonce</h3> 
@@ -23,17 +15,39 @@
 <div class="form-group">
     <label for="cat" class="col-md-3 control-label">Catégorie</label>
     <div class="col-sm-6">
-   {!! Form::select('catgorie',$categories, null, array('class' => 'form-control','id' => 'categorie','placeholder' => 'Sélectionner votre categorie') ) !!}
+      <select name='categorie_id' class="form-control" id='categorie' placeholder = 'Sélectionner votre categorie'>
+        <option>Sélectionner votre categorie</option>
+       @foreach($categories as $categorie)
+       <option value="{{ $categorie->id }}"> {{ $categorie->name }}</option>
+       @endforeach
+       </select>
+ 
     </div>
 
   </div> <!-- form-group // -->
   <div class="form-group">
     <label for="cat" class="col-md-3 control-label">Sous Catégorie</label>
     <div class="col-sm-6">
-
+      <select name='subcategorie_id' class="form-control" id="subcategorie">
+      
+      
+       </select>
+     
     </div>
     
   </div> 
+  <div class="form-group">
+    <label for="tech" class="col-sm-3 control-label">wilaya/pays</label>
+    <div class="col-sm-6">
+           {!! Form::select('state_id',$states, null, array('class' => 'form-control','id' => 'state','placeholder' => 'Sélectionner votre wilaya') ) !!}
+        @if ($errors->membre->has('state_id'))
+        <span class="alert-danger">
+           <strong>{{$errors->membre->first('state_id') }}</strong>
+        </span>
+      @endif
+  
+    </div>
+  </div> <!-- form-group // -->
   <hr>
 <div class="form-group">
 	<label for="name" class="col-sm-3 control-label">Type</label>
@@ -55,7 +69,7 @@
     </div>
   </div> <!-- form-group // -->
 
-@if(1==!0)
+
    <div class="form-group">
     <label for="name" class="col-sm-3 control-label">Marque</label>
     <div class="col-sm-9">
@@ -97,7 +111,6 @@
     </div>
   </div> <!-- form-group // -->
 
- @endif
   <div class="form-group">
     <label for="name" class="col-sm-3 control-label">couleur</label>
     <div class="col-sm-9">
@@ -136,16 +149,7 @@
       <label class="control-label small" for="file_img">Autre images</label>  <input type="file" name="file_archive">
     </div>
   </div> <!-- form-group // -->
-  <div class="form-group">
-    <label for="tech" class="col-sm-3 control-label">wilaya/pays</label>
-    <div class="col-sm-3">
-   <select class="form-control" name='wilaya'>
-	<option value="">choisir</option>
-	<option value="texnolog2"> 2</option>
-	<option value="texnolog3"> 3</option>
-   </select>
-    </div>
-  </div> <!-- form-group // -->
+  
   <hr>
   <div class="form-group">
     <div class="col-sm-offset-3 col-sm-9">
@@ -160,9 +164,33 @@
   
 </div> <!-- container// -->
 
+<script type="text/javascript">
+    $('#categorie').change(function(){
+    var cat_id = $(this).val();  
+    if(cat_id){
+        $.ajax({
+           type:"GET",
+           url:"{{url('get-categorie-list')}}?cat_id="+cat_id,
+           dataType:"json",
+           success:function(res){  
+            alert(cat_id);             
+            if(res){
+                $("#subcategorie").empty();
+                $("#subcategorie").append('<option>Select</option>');
+                $.each(res,function(key,value){
+                    $("#subcategorie").append('<option value="'+key+'">'+value+'</option>');
+                });
+           
+            }else{
+               $("#subcategorie").empty();
+            }
+           }
+        
+        });
+    }    
+   });
 
-
-
+</script>
 
 
 @stop

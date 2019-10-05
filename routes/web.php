@@ -10,6 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+use App\SubCategorie;
 
 Route::get('/', function () {
     return view('index');
@@ -46,7 +49,11 @@ Route::view('/home', 'home')->middleware('auth');
 
 Route::middleware('auth:membre')->get('membre', 'MembreController@index')->name('membre');
 Route::middleware('auth:boutique')->get('boutique', 'BoutiqueController@index')->name('boutique');
+Route::get('modifier/boutique/{id}','BoutiqueController@edit');
 
 // Annonce 
 Route::get( 'ajout/produits', 'AnnonceController@show' )->name('ajout.produits');;
+Route::get('get-categorie-list/{cat_id}','AnnonceController@getSubcatList');
+
+// });
 

@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-//<<<<<<< HEAD
-
+use App\State;
+use App\Categorie;
+use App\Boutique;
 class BoutiqueController extends Controller
 {
     /**
@@ -57,7 +58,11 @@ class BoutiqueController extends Controller
      */
     public function edit($id)
     {
-        //
+            
+        $boutiques=Boutique::where('id','=',$id)->get();
+         $states = State::all(['code', 'nom'])->pluck('nom', 'code');
+    $categories = Categorie::all(['id', 'name']);
+        return view('boutique/boutiqueinfo',['categories'=>$categories ,'states'=>$states ,'boutiques'=>$boutiques]);
     }
 
     /**
