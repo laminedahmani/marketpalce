@@ -34,7 +34,8 @@ Route::view('/home', 'home')->middleware('auth');
   Route::post( 'membre/login','Auth\AuthMembreLoginController@membreLogin' )->name('membre.login');
   Route::post( 'membre/register', [ 'as' => 'membre.register', 'uses' => 'Auth\MembreRegisterController@register' ] );
   Route::post('membre/logout', 'Auth\AuthMembreLoginController@logout')->name('membre.logout');
-  
+  Route::get('modifier/membre/{id}','MembreController@edit');
+  Route::put('modifier/membre/{id}','MembreController@update');
   
   
   // boutique authentication routes

@@ -10,12 +10,12 @@
           
     <ul class="nav navbar-nav">
       @auth("boutique")
-      <li class="active"><a href="   {{ url('boutique') }} ">ma boutique</a></li>
-        <li><a href="{{ url('modifier/boutique/id=1')}}" >Mes information</a></li>
+      <li class="active"><a href="   {{ url('boutique') }} ">Hanouti</a></li>
+        <li><a href="{{ url('modifier/boutique/'.Auth::guard('boutique')->user()->nom)}}" >Mes information</a></li>
       @endauth
       @auth("membre")
-      <li class="active"><a href="   {{ url('membre') }} ">ma boutique</a></li>
-       <li><a href="{{ url('modifier/membre/id=1')}}" >Mes information</a></li>
+      <li class="active"><a href="   {{ url('membre') }} ">Mon Profile </a></li>
+       <li><a href="{{ url('modifier/membre/'.Auth::guard('membre')->user()->id)}}" >Mes information</a></li>
       @endauth
      
     </ul>

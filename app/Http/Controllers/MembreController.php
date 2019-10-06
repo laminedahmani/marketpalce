@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Membre;
+use App\State;
+use App\Categorie;
 class MembreController extends Controller
 {
     /**
@@ -59,7 +61,14 @@ class MembreController extends Controller
      */
     public function edit($id)
     {
-        //
+        $membres=Membre::find($id);
+
+         $states = State::all(['code', 'nom'])->pluck('nom', 'code');
+          $value_state = State::find($membres->state_id);
+        
+    $categories = Categorie::all(['id', 'name']);
+        return view('membre/membreinfou',['categories'=>$categories ,'states'=>$states ,'membres'=>$membres,'value_state'=>$value_state]);
+    
     }
 
     /**
@@ -69,9 +78,21 @@ class MembreController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+   
     public function update(Request $request, $id)
     {
-        //
+        $membres=Membre::find($id);
+        $membres->nom=$request->input('nom');
+        $membres->prenom=$request->input('prenom');
+        $membres->tel=$request->input('tel');
+        $membres->password=$request->input('password');
+        $membres->state_id=$request->input('state_id');
+        $membres->address=$request->input('address');
+
+        $membres->save();
+        return redirect('membre');
+
+
     }
 
     /**

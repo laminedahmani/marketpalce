@@ -3,13 +3,9 @@
 @section('content')
 
 
-<div class="container">
-	<div class="row">
-		<div class="col-md center"><h1> bienvenue sur votre Compte  </h1> </div>
-	</div>
-</div>
 
-<h3 class='h3'>information personnelle</h3>
+
+<h3 class='h3 '>Modifier  mon compte</h3>
 
 
 <!-- insription boutique  -->
@@ -42,16 +38,7 @@
 			@endif
           </div>
         
-          <div class="form-group col-md-6">
-            <label for="inputEmail4">Email</label>
-            <input  name='email' type="email" class="form-control" id="inputEmail4" placeholder="Email" value="{{ old('email') }}">
-			@if ($errors->boutique->has('email'))
-				<span class="alert-danger">
-				   <strong>{{ $errors->boutique->first('email') }}</strong>
-				</span>
-			@endif
-   
-          </div>
+          
 
           <div class="form-group col-md-6">
             <label for="">téléphone</label>
@@ -152,9 +139,12 @@
             <label for="">logo/photo</label>
             <input  name='logo' type="file" class="form-control-file" id="inputPassword4" >
           </div>
-         <div class="form-group col-md-7 ">
-            <input  name='submit' type="submit" class="btn btn-primary" value='Crée ma Boutique' >
+         <div class="form-group col-md-8 " style='margin: 80px'>
+            <input  name='submit' type="submit" class="btn btn-lg  btn-primary" value='Crée ma Boutique' >
           </div> 
+          <div class="form-group  col-md-4 " style='margin: 80px 0 100px'>
+           <a href="#" class="btn btn-info btn-lg " role="button" aria-pressed="true">Annuler</a>
+          </div>
         
       
  </div>
