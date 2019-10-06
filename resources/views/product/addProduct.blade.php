@@ -15,24 +15,14 @@
 <div class="form-group">
     <label for="cat" class="col-md-3 control-label">Catégorie</label>
     <div class="col-sm-6">
-      <select name='categorie_id' class="form-control" id='categorie' placeholder = 'Sélectionner votre categorie'>
-        <option>Sélectionner votre categorie</option>
-       @foreach($categories as $categorie)
-       <option value="{{ $categorie->id }}"> {{ $categorie->name }}</option>
-       @endforeach
-       </select>
- 
+	    {!! Form::select('categorie_id',$categories, null, array('class' => 'form-control','id' => 'categorie_id','placeholder' => 'Sélectionner votre catégorie') ) !!}
     </div>
 
   </div> <!-- form-group // -->
   <div class="form-group">
     <label for="cat" class="col-md-3 control-label">Sous Catégorie</label>
     <div class="col-sm-6">
-      <select name='subcategorie_id' class="form-control" id="subcategorie">
-      
-      
-       </select>
-     
+      {!! Form::select('subcategorie_id',[""=>"Sélectionner votre sous catégorie"], null, array('class' => 'form-control','id' => 'subcategorie_id') ) !!}
     </div>
     
   </div> 
@@ -40,12 +30,7 @@
     <label for="tech" class="col-sm-3 control-label">wilaya/pays</label>
     <div class="col-sm-6">
            {!! Form::select('state_id',$states, null, array('class' => 'form-control','id' => 'state','placeholder' => 'Sélectionner votre wilaya') ) !!}
-        @if ($errors->membre->has('state_id'))
-        <span class="alert-danger">
-           <strong>{{$errors->membre->first('state_id') }}</strong>
-        </span>
-      @endif
-  
+
     </div>
   </div> <!-- form-group // -->
   <hr>
@@ -53,10 +38,10 @@
 	<label for="name" class="col-sm-3 control-label">Type</label>
 	<div class="col-sm-9">
 		<label class="radio-inline">
-	  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1">Gros
+	  <input type="radio" name="type_annonce" id="inlineRadio1" value="Gros">Gros
 	</label>
 	<label class="radio-inline">
-	  <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="2"> Détails
+	  <input type="radio" name="type_annonce" id="inlineRadio2" value="Détails"> Détails
 	</label>
 
 	</div>
@@ -101,12 +86,12 @@
    <div class="form-group">
     <label for="name" class="col-sm-3 control-label">Etat</label>
     <div class="col-sm-9">
-     <select class="form-control" name='wilaya'>
-	<option value="">choisir</option>
-	<option value="texnolog2">Bon </option>
-	<option value="texnolog3"> Trés bon </option>
-	<option value="texnolog2">Jamais utilisé </option>
-	<option value="texnolog3"> Moyen </option>
+     <select class="form-control" name='etat'>
+	<option value="">choisir l'état du produit</option>
+	<option value="Bon">Bon </option>
+	<option value="Trés bon"> Trés bon </option>
+	<option value="Jamais utilisé">Jamais utilisé </option>
+	<option value=" Moyen"> Moyen </option>
    </select>
     </div>
   </div> <!-- form-group // -->
@@ -114,26 +99,26 @@
   <div class="form-group">
     <label for="name" class="col-sm-3 control-label">couleur</label>
     <div class="col-sm-9">
-      <input type="text" class="form-control" name="name" id="name" placeholder="exp : rouge">
+      <input type="text" class="form-control" name="couleur" id="name" placeholder="exp : rouge">
     </div>
   </div> <!-- form-group // -->
   <div class="form-group">
     <label for="about" class="col-sm-3 control-label">Déscription</label>
     <div class="col-sm-9">
-      <textarea class="form-control"></textarea>
+      <textarea class="form-control" name="description"></textarea>
     </div>
   </div> <!-- form-group // -->
   <div class="form-group">
     <label for="qty" class="col-sm-3 control-label">Quantité</label>
     <div class="col-sm-3">
-   <input type="number" class="form-control" name="quantit" id="qty" placeholder="1">
+   <input type="number" class="form-control" name="quantite" id="qty" placeholder="1">
     </div>
   </div> <!-- form-group // -->
   <div class="form-group">
     <label class="col-sm-3 control-label">LES PRIX en DA</label>
     <div class="col-sm-3"> 
 	  <label class="control-label small" for="date_start">Prix</label>
-	  <input type="text" class="form-control" name="prix" id="date_start" placeholder="2200">
+	  <input type="text" class="form-control" name="prix"  placeholder="2200">
     </div>
 	<div class="col-sm-3">   
 	  <label class="control-label small" for="date_finish">Prix du solde</label>
@@ -146,14 +131,14 @@
       <label class="control-label small" for="file_img">image principale</label> <input type="file" name="img_principale">
     </div>
 	<div class="col-sm-3">
-      <label class="control-label small" for="file_img">Autre images</label>  <input type="file" name="file_archive">
+      <label class="control-label small" for="file_img">Autre images</label>  <input type="file" name="autre_image">
     </div>
   </div> <!-- form-group // -->
   
   <hr>
   <div class="form-group">
     <div class="col-sm-offset-3 col-sm-9">
-      <button type="submit" class="btn btn-primary">Ajouter</button>
+      <button type="submit" class="btn btn-primary">Ajouter produit</button>
     </div>
   </div> <!-- form-group // -->
 </form>
@@ -164,33 +149,39 @@
   
 </div> <!-- container// -->
 
-<script type="text/javascript">
-    $('#categorie').change(function(){
-    var cat_id = $(this).val();  
-    if(cat_id){
-        $.ajax({
-           type:"GET",
-           url:"{{url('get-categorie-list')}}?cat_id="+cat_id,
-           dataType:"json",
-           success:function(res){  
-            alert(cat_id);             
-            if(res){
-                $("#subcategorie").empty();
-                $("#subcategorie").append('<option>Select</option>');
-                $.each(res,function(key,value){
-                    $("#subcategorie").append('<option value="'+key+'">'+value+'</option>');
-                });
-           
-            }else{
-               $("#subcategorie").empty();
-            }
-           }
-        
-        });
-    }    
-   });
 
-</script>
 
+
+
+<!--script ajax pour faire la mise a jour des souscatégories selon la catégories sélectionnée-->	
+		<script>
+			$( document ).ready(function() {
+				$("#categorie_id").change(function(){
+					$.ajax({
+				   	url:"{{ url('/get-categorie-list') }}",
+				    dataType: 'json',
+				    data:'categorie_id='+ $("#categorie_id").val(),
+					// if you recive response from the back-end
+				    success:function(data){
+						$("#subcategorie_id option").remove();
+						if(data.length>0){
+							$("#subcategorie_id").prop('disabled', false);
+							$("#subcategorie_id").append('<option value="">Selectionner une sous catégorie</option>')
+							$.each(data, function(){
+								 $("#subcategorie_id").append('<option value="'+ this.id +'">'+ this.name +'</option>')
+							});
+						}else{
+							$("#subcategorie_id").prop("disabled", "disabled");
+							$("#subcategorie_id").append('<option value=""> y\'a pas de sous catégorie</option>')
+						}
+			        },
+					
+					error: function (data) {
+					   alert("souscatégories n’excite pas!!");
+					},
+				});
+				});
+              });
+		</script>
 
 @stop

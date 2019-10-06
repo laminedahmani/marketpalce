@@ -24,7 +24,9 @@ public function index()
      */
     public function create()
     {
-        //
+       $states = State::all(['code', 'nom'])->pluck('nom', 'code');
+		$categories = Categorie::all(['id', 'name'])->pluck( 'name','id');
+		return view( 'product/addproduct',['categories'=>$categories ,'states'=>$states ]);
     }
 
     /**
@@ -46,23 +48,10 @@ public function index()
      */
     public function show()
     {
-    $states = State::all(['code', 'nom'])->pluck('nom', 'code');
-    $categories = Categorie::all(['id', 'name']);
+		
+	}
 
-    //$subcategories = SubCategorie::all(['id','Categorie_id', 'name']);
-    
-			return view( 'product/addproduct',['categories'=>$categories ,'states'=>$states ]);
-			     
-    }
-
-    public function getSubcatList(Request $request)
-    {
-    
-            
-            $subcategories =SubCategorie::where('categorie_id','=',$request->cat_id)->get();
-        return response()->json($subcategories);
-
-    }
+   
 
     /**
      * Show the form for editing the specified resource.
@@ -97,6 +86,17 @@ public function index()
     {
         //
     }
+	
+	 public function getSubcatList(Request $request)
+    {
+		 $categorie_id= $request->get("categorie_id");
+        $subcategories =SubCategorie::where('categorie_id','=',$categorie_id)->get();
+        return response()->json($subcategories);
+		
+    }
+	
+	
+	
 }	
 
 

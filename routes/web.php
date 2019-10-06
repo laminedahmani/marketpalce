@@ -52,8 +52,8 @@ Route::middleware('auth:boutique')->get('boutique', 'BoutiqueController@index')-
 Route::get('modifier/boutique/{id}','BoutiqueController@edit');
 
 // Annonce 
-Route::get( 'ajout/produits', 'AnnonceController@show' )->name('ajout.produits');;
-Route::get('get-categorie-list/{cat_id}','AnnonceController@getSubcatList');
+Route::get( 'ajout/produits', 'AnnonceController@create' )->name('ajout.produits');;
+Route::get('get-categorie-list','AnnonceController@getSubcatList');
 
 // });
 
