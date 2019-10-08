@@ -353,54 +353,39 @@
 
 
 		<!-- NAVIGATION -->
-		
+		 
 
 		<!-- SECTION -->
 		<div class="section">
 			<!-- container -->
 			<div class="container">
+                 <h3 class="title">NOS BOUTIQUE</h3>
 				<!-- row -->
 				<div class="row">
 					<!-- shop -->
+
+                    @foreach($boutiques as $boutique)
+
 					<div class="col-md-4 col-xs-6">
 						<div class="shop">
 							<div class="shop-img">
-								<img src="img/photo 12.JPG" alt="">
+								<img src="{{url('avatar_boutique/'.$boutique->url_photo) }}" alt="">
 							</div>
 							<div class="shop-body">
-								
-								<a href="#" class="cta-btn">VOIR<i class="fa fa-arrow-circle-right"></i></a>
+								<h4> {{ $boutique->nom_magasin }}</h4>
+                                <h4> {{ $boutique->url_photo }}</h4>
+								<a href="{{url('boutique/'.$boutique->id) }}" class="cta-btn">VOIR<i class="fa fa-arrow-circle-right"></i></a>
 							</div>
 						</div>
 					</div>
 					<!-- /shop -->
-
+                    @endforeach
 					<!-- shop -->
-					<div class="col-md-4 col-xs-6">
-						<div class="shop">
-							<div class="shop-img">
-								<img src="img/photo 15.JPG" alt="">
-							</div>
-							<div class="shop-body">
-								
-								<a href="#" class="cta-btn">VOIR<i class="fa fa-arrow-circle-right"></i></a>
-							</div>
-						</div>
-					</div>
+					
 					<!-- /shop -->
 
 					<!-- shop -->
-					<div class="col-md-4 col-xs-6">
-						<div class="shop">
-							<div class="shop-img">
-								<img src="img/photo 11.JPG" alt="">
-							</div>
-							<div class="shop-body">
-								
-								<a href="#" class="cta-btn">VOIR<i class="fa fa-arrow-circle-right"></i></a>
-							</div>
-						</div>
-					</div>
+					
 					<!-- /shop -->
 				</div>
 				<!-- /row -->

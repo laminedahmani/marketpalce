@@ -42,8 +42,8 @@
 			@endif
           </div>
           <div class="form-group col-md-6">
-            <label for="inputPassword4">nouveau mot de passe</label>
-            <input  type="password" name="password" class="form-control" id="inputPassword4" placeholder="mot de passe" value="{{ $membres->tel }}">
+            <label for="inputPassword4">Nouveau mot de passe</label>
+            <input  type="password" name="password" class="form-control" id="inputPassword4" placeholder="mot de passe">
 			@if ($errors->membre->has('password'))
 				<span class="alert-danger">
 				   <strong>{{ $errors->membre->first('password') }}</strong>

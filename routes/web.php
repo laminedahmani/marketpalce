@@ -10,12 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
-use App\SubCategorie;
+use App\Boutique;
+use App\Categorie;
+use App\State;
 
 Route::get('/', function () {
-    return view('index');
+  $boutiques=Boutique::orderBy('id','desc')->take(6)->get();
+    return view('index',['boutiques'=>$boutiques]);
 })->name('index');;;
 
 Auth::routes();
@@ -46,7 +47,8 @@ Route::view('/home', 'home')->middleware('auth');
   Route::post( 'boutique/login', ['as' => 'boutique.login', 'uses' => 'Auth\AuthBoutiqueLoginController@boutiqueLogin' ] );
   Route::post( 'boutique/register', [ 'as' => 'boutique.register', 'uses' => 'Auth\BoutiqueRegisterController@register' ] );
   Route::post('boutique/logout', 'Auth\AuthBoutiqueLoginController@logout')->name('boutique.logout');
-  
+Route::get('modifier/boutique/{id}','BoutiqueController@edit');
+  Route::put('modifier/boutique/{id}','BoutiqueController@update');  
 
 Route::middleware('auth:membre')->get('membre', 'MembreController@index')->name('membre');
 Route::middleware('auth:boutique')->get('boutique', 'BoutiqueController@index')->name('boutique');
@@ -58,3 +60,11 @@ Route::get('get-categorie-list','AnnonceController@getSubcatList');
 
 // });
 
+
+//public routes 
+Route::get('/boutique/{id}', function ($id) {
+   $boutique=Boutique::find($id);
+   $seceur=Categorie::find($boutique->secteur_activite);
+   $wilaya=State::find($boutique->state_id);
+    return view('oneboutique',['boutique'=>$boutique,'seceur'=>$seceur,'wilaya'=>$wilaya]);
+});

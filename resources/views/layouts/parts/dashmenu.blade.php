@@ -11,7 +11,7 @@
     <ul class="nav navbar-nav">
       @auth("boutique")
       <li class="active"><a href="   {{ url('boutique') }} ">Hanouti</a></li>
-        <li><a href="{{ url('modifier/boutique/'.Auth::guard('boutique')->user()->nom)}}" >Mes information</a></li>
+        <li><a href="{{ url('modifier/boutique/'.Auth::guard('boutique')->user()->id)}}" >Mes information</a></li>
       @endauth
       @auth("membre")
       <li class="active"><a href="   {{ url('membre') }} ">Mon Profile </a></li>

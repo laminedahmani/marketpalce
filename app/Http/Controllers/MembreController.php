@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Membre;
 use App\State;
@@ -85,7 +85,8 @@ class MembreController extends Controller
         $membres->nom=$request->input('nom');
         $membres->prenom=$request->input('prenom');
         $membres->tel=$request->input('tel');
-        $membres->password=$request->input('password');
+         if(!empty($request->input('password'))){
+        $membres->password=Hash::make($request->input('password'));}
         $membres->state_id=$request->input('state_id');
         $membres->address=$request->input('address');
 

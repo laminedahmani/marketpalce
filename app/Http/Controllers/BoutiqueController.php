@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\State;
 use App\Categorie;
@@ -47,7 +47,8 @@ class BoutiqueController extends Controller
      */
     public function show($id)
     {
-        //
+     
+        
     }
 
     /**
@@ -58,11 +59,14 @@ class BoutiqueController extends Controller
      */
     public function edit($id)
     {
-            
-        $boutiques=Boutique::where('id','=',$id)->get();
-         $states = State::all(['code', 'nom'])->pluck('nom', 'code');
-    $categories = Categorie::all(['id', 'name']);
-        return view('boutique/boutiqueinfo',['categories'=>$categories ,'states'=>$states ,'boutiques'=>$boutiques]);
+
+        $boutiques=Boutique::find($id);
+        $value_state = State::find($boutiques->state_id);
+        $value_cat= Categorie::find($boutiques->secteur_activite);
+
+        $states = State::all(['code', 'nom'])->pluck('nom', 'code');
+        $categories = Categorie::all(['id', 'name'])->pluck('name', 'id');;
+        return view('boutique/boutiqueinfo',['categories'=>$categories ,'states'=>$states ,'boutiques'=>$boutiques,'value_state'=>$value_state , 'value_cat'=>$value_cat->id]);
     }
 
     /**
@@ -74,7 +78,28 @@ class BoutiqueController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+       $boutique=Boutique::find($id);
+        $boutique->nom=$request->input('nom');
+        $boutique->prenom=$request->input('prenom');
+        $boutique->tel=$request->input('tel');
+        if(!empty($request->input('password'))){
+        $boutique->password=Hash::make($request->input('password'));}
+        $boutique->state_id=$request->input('state_id');
+        $boutique->nom_magasin=$request->input('nom_magasin');
+        $boutique->type_magasin=$request->input('type_magasin');
+        $boutique->secteur_activite=$request->input('secteur_activite');
+        $boutique->presentation=$request->input('presentation');
+        if(!empty($request->input('logo'))){
+        $boutique->url_photo=$request->input('logo');}
+        if($boutique->pack!==$request->input('pack')){
+         $boutique->pack=$request->input('pack');
+        $boutique->Activated=0;
+        }
+
+                                
+        $boutique->save();
+        return redirect('boutique');
     }
 
     /**

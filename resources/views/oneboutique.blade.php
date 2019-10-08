@@ -12,21 +12,29 @@
 		<div class="col"><h1> boutique profil ( vue par visiteur )</h1></div>
 	</div>
 </div> -->
+
 <section>
 <div class="container margtop" >
 	<div class="row" >
-		<div class="col-md-3"><img class="img-circle" src="{{ url('img/004.jpg') }}"  width='200px' height='200px' alt=""  ></div>
+		<div class="col-md-3"><img class="img-circle" src="{{ url('avatar_boutique/'.$boutique->url_photo) }}"  width='200px' height='200px' alt=""  ></div>
 		<div class="col-md-6">
-			<h1>titre</h1>
-			<p> description</p>
+			<h1>{{ $boutique->nom_magasin }}</h1>
+			<p> {{ $boutique->presentation }}</p>
 
 		</div>
 		<div class="col-md-3">
-			<p><i class="fa fa-phone" aria-hidden="true"></i> 0875665985</p>
-			<p><i class="fa fa-envelope" aria-hidden="true"></i> edgvrg@sdfgdrgd.com</p>
-			<p><i class="fa fa-map-marker" aria-hidden="true"></i> alger boumerdes rue 15 bt 500</p>
+			<p><i class="fa fa-phone" aria-hidden="true"></i> {{ $boutique->tel }}</p>
+			<p><i class="fa fa-envelope" aria-hidden="true"></i> {{ $boutique->email }}</p>
+			<p><i class="fa fa-map-marker" aria-hidden="true"></i> {{ $boutique->address }}</p>
 
 		</div>
+        <div class="col-md-3">
+            <p><b>Wilaya principal:</b> {{ $wilaya->nom }}</p>
+            <p><b>Activité principal:</b> {{ $seceur->name }}</p>
+            <p><b>Vente par:</b> {{ $boutique->type_magasin }}</p>
+           
+
+        </div>
 	</div>
 </div>
 
