@@ -1123,7 +1123,7 @@
 							<p>Sign Up for the <strong>NEWSLETTER</strong></p>
 							<form>
 								<input class="input" type="email" placeholder="Enter Your Email">
-								<button class="newsletter-btn"><i class="fa fa-envelope"></i> Subscribe</button>
+								<button class="newsletter-btn"><i class="fas fa-envelope"></i> Subscribe</button>
 							</form>
 							<ul class="newsletter-follow">
 								<li>
