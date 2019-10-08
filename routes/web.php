@@ -54,8 +54,10 @@ Route::middleware('auth:membre')->get('membre', 'MembreController@index')->name(
 Route::middleware('auth:boutique')->get('boutique', 'BoutiqueController@index')->name('boutique');
 Route::get('modifier/boutique/{id}','BoutiqueController@edit');
 
-// Annonce 
-Route::get( 'ajout/produits', 'AnnonceController@create' )->name('ajout.produits');;
+//-----Routes Annonce 
+
+Route::get( 'produits/ajout', 'AnnonceController@create' )->name('ajout.produits');
+Route::post('produits/ajout', 'AnnonceController@store')->name("annonces.store");
 Route::get('get-categorie-list','AnnonceController@getSubcatList');
 
 // });

@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\State;
+use App\Annonce;
 use App\Categorie;
 use App\SubCategorie;
 use App\Http\Requests;
-
+use App\Http\Requests\AnnonceRequest;
 use DB;
 class AnnonceController extends Controller
 {
@@ -35,9 +36,11 @@ public function index()
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AnnonceRequest $request)
     {
-        //
+	    $annonce=Annonce::create($request->except(['_token','img_principale','autre_image']));
+       //after save of new client is ok redirect to Clients index with msg success and the registered object
+		return redirect()->route('boutique')->with('success','L\'annonce bien ajoutée, en attente d\'être approuvée par l\'administrateur');
     }
 
     /**

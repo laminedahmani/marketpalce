@@ -20,7 +20,7 @@
      
     </ul>
     <ul class="nav navbar-nav">
-       <li><a href="{{ url('ajout/produits')}}">Ajouté une annonce</a></li>
+       <li><a href="{{ url('produits/ajout')}}">Ajouté une annonce</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
        @auth("boutique")
