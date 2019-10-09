@@ -24,7 +24,7 @@ class CreateAnnoncesTable extends Migration
 			//$table->integer('deli_livraison')->nullable();
 			$table->decimal('prix_solde',15, 2)->nullable();
 			$table->boolean('Activated')->default(false);
-		    $table->integer('nbr_vue');
+		    $table->integer('nbr_vue')->default(0);;
 		    // fields added recently 
 		    
 		    $table->string('marque')->nullable(); //voiture , informatique ..ext

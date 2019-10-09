@@ -38,6 +38,15 @@ class AnnonceRequest extends FormRequest
 			'couleur' => 'required',
 			'quantite' => 'required|numeric',
 			'prix' => 'required|regex:/^\d+(\.\d{1,2})?$/',
+			'autre_images.*' => 'mimes:jpg,jpeg,bmp,png|max:5000',
+			'img_principale' => 'mimes:jpg,jpeg,bmp,png|max:5000',
+            'autre_images' => 'max:5',
 		];
+    }
+	 public function messages()
+    {
+        return [
+           "autre_images.max" => "Img can't be more than 5."
+        ];
     }
 }

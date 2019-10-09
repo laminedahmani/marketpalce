@@ -192,7 +192,12 @@
       <label class="control-label small" for="file_img">image principale</label> <input type="file" name="img_principale">
     </div>
 	<div class="col-sm-3">
-      <label class="control-label small" for="file_img">Autre images</label>  <input type="file" name="autre_image" multiple="multiple">
+      <label class="control-label small" for="file_img">Autre images</label>  <input type="file" name="autre_images[]" multiple="multiple">
+	  @if ($errors->has('autre_images'))
+				<span class="alert-danger">
+				   <strong>{{ $errors->first('autre_images') }}</strong>
+				</span>
+			@endif
     </div>
   </div> <!-- form-group // -->
   
