@@ -374,7 +374,7 @@
 							<div class="shop-body">
 								<h4> {{ $boutique->nom_magasin }}</h4>
                                 <h4> {{ $boutique->url_photo }}</h4>
-								<a href="{{url('boutique/'.$boutique->id) }}" class="cta-btn">VOIR<i class="fa fa-arrow-circle-right"></i></a>
+								<a href="{{url('boutiques/'.$boutique->id) }}" class="cta-btn">VOIR<i class="fa fa-arrow-circle-right"></i></a>
 							</div>
 						</div>
 					</div>

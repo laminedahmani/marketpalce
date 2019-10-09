@@ -13,11 +13,26 @@
 use App\Boutique;
 use App\Categorie;
 use App\State;
+use App\Annonce;
+
 
 Route::get('/', function () {
+  $annonces=Boutique::orderBy('id','desc')->take(10)->get();
   $boutiques=Boutique::orderBy('id','desc')->take(6)->get();
-    return view('index',['boutiques'=>$boutiques]);
+    return view('index',['boutiques'=>$boutiques , 'annonces'=>$annonces]);
 })->name('index');;;
+
+
+
+Route::get('/annonce/{id}', function ($id) {
+    $annonce=Annonce::find($id);
+  return view('product/oneproduct',['annonce'=>$annonce]);
+})->name('annonce')->where('id','[0-9]+');
+
+Route::get('/marquet/', function ($id) {
+    $annonce=Annonce::all();
+  return view('product/oneproduct',['annonce'=>$annonce]);
+})->name('marquet');
 
 Auth::routes();
  

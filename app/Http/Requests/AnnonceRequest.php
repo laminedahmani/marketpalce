@@ -30,12 +30,12 @@ class AnnonceRequest extends FormRequest
 			'state_id' => 'required',
 			'type_annonce' => 'required',
 			'titre' => 'required|max:60',
-			'marque' => 'required|max:50',
-			'anne' => 'required|max:2099|min:1990|numeric',
-			'taille' => 'required|max:10',
-			'modele' => 'required|max:60',
+			'marque' => 'max:50',
+			'anne' => 'numeric',
+			'taille' => 'max:10',
+			'modele' => 'max:60',
 			'etat' => 'required',
-			'couleur' => 'required',
+			
 			'quantite' => 'required|numeric',
 			'prix' => 'required|regex:/^\d+(\.\d{1,2})?$/',
 		];
