@@ -13,11 +13,13 @@
     <h3 class="h3">vos produits</h3>
 
               @if (session('success'))
-				   <div class="col-md-3 col-sm-6 col-md-push-4" >
-                        <div class="alert alert-success" role="alert">
-                            {{ session('success') }}
-                        </div>
-					</div>
+					<div class="row">
+					   <div class="col-md-3 col-sm-6 col-md-push-4" >
+							<div class="alert alert-success" role="alert">
+								{{ session('success') }}rrtgrdtg
+							</div>
+						</div>
+				 </div>
                 @endisset  
 <div class="row">
         <div class="col-md-3 col-sm-6">

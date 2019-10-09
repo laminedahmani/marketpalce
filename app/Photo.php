@@ -20,7 +20,7 @@ class Photo extends Model
      * @var array
      */
     protected $fillable = [
-         'url_photo', '	annonce_id',
+         'url_photo', 'annonce_id',
     ];
 	
 	

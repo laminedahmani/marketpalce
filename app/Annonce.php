@@ -20,7 +20,7 @@ class Annonce extends Model
      * @var array
      */
     protected $fillable = [
-         'titre', 'description','type_annonce','prix','quantite','prix_livraison','prix_livraison','deli_livraison','prix_solde','Activated','nbr_vue','membre_id','boutique_id','state_id','categorie_id','subcategorie_id'
+         'titre', 'description','type_annonce','prix','quantite','prix_livraison','prix_livraison','deli_livraison','prix_solde','Activated','nbr_vue','marque','anne','taille','modele','etat','couleur','img_principale','membre_id','boutique_id','state_id','categorie_id','subcategorie_id'
     ];
 	
 	
