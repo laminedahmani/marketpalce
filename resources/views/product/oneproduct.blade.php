@@ -14,21 +14,14 @@
 					<!-- Product main img -->
 					<div class="col-md-5 col-md-push-2">
 						<div id="product-main-img">
+									
+							@foreach($photos as $photo)
+							
 							<div class="product-preview">
-								<img src="{{ url('/img/005.jpg') }}" alt="">
+								<img src="{{ url('/img_annonces/'.$photo->url_photo) }}" alt="">
 							</div>
-
-							<div class="product-preview">
-								<img src="{{ url('/img/product03.png') }}" alt="">
-							</div>
-
-							<div class="product-preview">
-								<img src="{{ url('/img/product06.png') }}" alt="">
-							</div>
-
-							<div class="product-preview">
-								<img src="{{ url('/img/product08.png') }}" alt="">
-							</div>
+							@endforeach
+						
 						</div>
 					</div>
 					<!-- /Product main img -->
@@ -36,21 +29,16 @@
 					<!-- Product thumb imgs -->
 					<div class="col-md-2  col-md-pull-5">
 						<div id="product-imgs">
+							@foreach($photos as $photo)
 							<div class="product-preview">
-								<img src="{{ url('/img/product01.png') }}" alt="">
+								<img src="{{ url('/img_annonces/'.$photo->url_photo) }}" alt="">
 							</div>
+							@endforeach
+							
 
-							<div class="product-preview">
-								<img src="{{ url('/img/product03.png') }}" alt="">
-							</div>
+							
 
-							<div class="product-preview">
-								<img src="{{ url('/img/product06.png') }}" alt="">
-							</div>
-
-							<div class="product-preview">
-								<img src="{{ url('/img/product08.png') }}" alt="">
-							</div>
+							
 						</div>
 					</div>
 					<!-- /Product thumb imgs -->
@@ -58,8 +46,11 @@
 					<!-- Product details -->
 					<div class="col-md-5">
 						<div class="product-details">
-							<h2 class="product-name">product name goes here</h2>
-							<div>
+							<h2 class="product-name">{{ $annonce->titre }}</h2>
+							<h5><span style='color:red;'>categorie du produit:</span> {{ $categorie->name}}</h5>
+							<h6><span style='color:red;'>sous categorie du produit: </span>{{$souscategorie->name}}</h6>
+							<h6><span style='color:red;'>wilaya: </span>{{$wilaya->nom}}</h6>
+							<!-- <div>
 								<div class="product-rating">
 									<i class="fa fa-star"></i>
 									<i class="fa fa-star"></i>
@@ -68,29 +59,30 @@
 									<i class="fa fa-star-o"></i>
 								</div>
 								<a class="review-link" href="#">10 Review(s) | Add your review</a>
-							</div>
+							</div> -->
 							<div>
-								<h3 class="product-price">DA  980.00 <del class="product-old-price">DA  990.00</del></h3>
-								<span class="product-available">In Stock</span>
+								<h3 class="product-price">{{ $annonce->prix }} DA<del class="product-old-price">{{ $annonce->prix_solde }} DA</del></h3>
+								<span class="product-available">par :{{ $annonce->type_annonce }}</span>
 							</div>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+							<p>{{ $annonce->description }}</p>
 
 							<div class="product-options">
-								<label>
+								<p><span style='color:red;font-size:18px'>Marque:  </span>{{ $annonce->marque }}</p>
+								<p><span style='color:red;font-size:18px'>Anné:  </span>{{ $annonce->anne }}</p>
+								<p><span style='color:red;font-size:18px'>Taille:  </span>{{ $annonce->taille }}</p>
+								<p><span style='color:red;font-size:18px'>Couleur:  </span>{{ $annonce->couleur }}</p>
+								<p><span style='color:red;font-size:18px'>Etat:  </span>{{ $annonce->etat }}</p>
+								<p><span style='color:red;font-size:18px'>Quantité:  </span>{{ $annonce->quantite }}</p>
+								<!-- <label>
 									Size
 									<select class="input-select">
 										<option value="0">X</option>
 									</select>
-								</label>
-								<label>
-									Color
-									<select class="input-select">
-										<option value="0">Red</option>
-									</select>
-								</label>
+								</label> -->
+								
 							</div>
 
-							<div class="add-to-cart">
+							<!-- <div class="add-to-cart">
 								<div class="qty-label">
 									Qty
 									<div class="input-number">
@@ -111,10 +103,10 @@
 								<li>Category:</li>
 								<li><a href="#">Headphones</a></li>
 								<li><a href="#">Accessories</a></li>
-							</ul>
+							</ul> -->
 
 							<ul class="product-links">
-								<li>Share:</li>
+								<li>partagé:</li>
 								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
 								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
 								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
