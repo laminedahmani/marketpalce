@@ -13,11 +13,49 @@
 use App\Boutique;
 use App\Categorie;
 use App\State;
+use App\Annonce;
+use App\Photo;
 
 Route::get('/', function () {
+  $annonces=Annonce::orderBy('id','desc')->take(10)->get();
+   $annoncevendu=Annonce::orderBy('nbr_vue','desc')->take(10)->get();
   $boutiques=Boutique::orderBy('id','desc')->take(6)->get();
-    return view('index',['boutiques'=>$boutiques]);
-})->name('index');;;
+  $categorie=Categorie::all();
+    return view('index',['boutiques'=>$boutiques , 'annonces'=>$annonces,'categorie'=>$categorie,'annoncevendu'=>$annoncevendu]);
+})->name('index');
+
+
+
+Route::get('/annonce/{id}', function ($id) {
+  $annonce=Annonce::find($id);
+  $photos=Photo::where('annonce_id',$annonce->id)->get();
+  $categorie=Categorie::find($annonce->categorie_id);
+  $souscategorie=Categorie::find($annonce->subcategorie_id);
+  $wilaya=State::find($annonce->state_id);
+  return view('product/oneproduct',['annonce'=>$annonce , 'photos'=>$photos,'categorie'=>$categorie ,'souscategorie'=>$souscategorie,'wilaya'=>$wilaya]);
+})->name('annonce')->where('id','[0-9]+');
+
+
+// page marquet routes -----------------------------------------------------------
+
+Route::get('/marquet/', function () {
+    $annoncevendu=Annonce::orderBy('nbr_vue','desc')->take(4)->get();
+    $annonce=Annonce::all();
+    $categories=Categorie::all();
+    $wilayas =State::all();
+  return view('store',['annonces'=>$annonce , 'categories'=>$categories,'annoncevendu'=>$annoncevendu,'wilayas'=>$wilayas]);
+})->name('marquet.');
+
+Route::get('/marquet/{q}', function ($q) {
+    $annoncevendu=Annonce::orderBy('nbr_vue','desc')->take(4)->get();
+    $annonce=Annonce::all();
+    $categories=Categorie::all();
+    $wilayas =State::all();
+  return view('store',['annonces'=>$annonce , 'categories'=>$categories,'annoncevendu'=>$annoncevendu,'wilayas'=>$wilayas]);
+})->name('marquet.show');
+
+// !marquette route  ------------------------------------------------------------
+
 
 Auth::routes();
  
@@ -65,9 +103,33 @@ Route::get('get-categorie-list','AnnonceController@getSubcatList');
 
 
 //public routes 
-Route::get('/boutique/{id}', function ($id) {
+Route::get('/boutiques/{id}', function ($id) {
    $boutique=Boutique::find($id);
    $seceur=Categorie::find($boutique->secteur_activite);
    $wilaya=State::find($boutique->state_id);
-    return view('oneboutique',['boutique'=>$boutique,'seceur'=>$seceur,'wilaya'=>$wilaya]);
+   $annonces=Annonce::where('boutique_id',$id)->get();
+   
+    return view('oneboutique',['boutique'=>$boutique,'seceur'=>$seceur,'wilaya'=>$wilaya,'annonces'=>$annonces]);
 });
+
+// routes statique ------------------------------------------------------
+
+Route::get('/apropos', function () {
+    return view('appropo');
+});
+Route::get('/pack', function () {
+    return view('pack');
+});
+Route::get('/pubs', function () {
+    return view('pubs');
+});
+Route::get('/terme', function () {
+    return view('terme');
+});
+Route::get('/pubs', function () {
+    return view('pubs');
+});
+Route::get('/contact', function () {
+    return view('contact');
+});
+

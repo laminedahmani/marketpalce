@@ -1,6 +1,5 @@
 
 
-	<header>
 			<!-- TOP HEADER -->
 			<div id="top-header">
 				<div class="container">
@@ -13,17 +12,11 @@
                         
                         <li><i class="fa fa-building"></i><a href=" {{ url('inscription') }}"> Crée Hanoutek / s'inscrire</a></li>
 						@if(Auth::guest())
-                         <li class="dropdown">
-					        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-sign-in" aria-hidden="true"></i><a href="{{ url('connexion') }}">Se connecter</a>
-					        <span class="caret"></span></a>
-					        <ul class="dropdown-menu" style='background-color:black'>
-					          <li><a href="{{ url('boutique/login') }}">boutique</a></li>
-					          <li><a href="{{ url('membre/login') }}">Particulier</a></li>
-					         
-					        </ul>
-					      </li>
+						<li><a href=" {{ url('connexion') }} "><i class="fa fa fa-sign-in"></i> Se connecter</a></li>
+						
 						@else
-							<li><a href=" {{ url('inscription') }} "><i class="fa fa-user-o"></i> Mon compte</a></li>
+						<li><a href=" {{ url('connexion') }} "><i class="fa fa-user-o"></i> Mon compte</a></li>
+							
 						@endif
 					</ul>
 				</div>
@@ -49,7 +42,7 @@
 						<!-- SEARCH BAR -->
 						<div class="col-md-6">
 							<div class="header-search">
-								<form  method='GET' action="{{url('store')}}">
+								<form  method='GET' action="{{url('store/')}}">
 									<div class="dropdown" style='display:inline'>
 										  <button class="btn btn-info dropdown-toggle categorie-btn" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										    Catégorie 

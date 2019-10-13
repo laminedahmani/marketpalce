@@ -9,19 +9,19 @@
 				<div class="container">
 					<!-- row -->
 					<div class="row">
-						<div class="col-md-3 col-xs-6">
+						<div class="col-md-6 col-xs-6">
 							<div class="footer">
-								<h3 class="footer-title">A propos  de nous</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
+								<h3 class="footer-title">A propos de nous</h3>
+								<p>Grossista est le portail d'achat vente en ligne pour entreprises et professionnels Et les petits entrepreneurs  leader en Algérie et dans tout le monde.</p>
 								<ul class="footer-links">
-									<li><a href="#"><i class="fa fa-map-marker"></i>Alger ...</a></li>
-									<li><a href="#"><i class="fa fa-phone"></i>0780965865</a></li>
+									<li><a href="#"><i class="fa fa-map-marker"></i>Localisation ALGERIA-Alger</a></li>
+									<li><a href="#"><i class="fa fa-phone"></i>0791 52 52 80</a></li>
 									<li><a href="#"><i class="fa fa-envelope-o"></i>contact@grossista.com</a></li>
 								</ul>
 							</div>
 						</div>
 
-						<div class="col-md-3 col-xs-6">
+						<!-- <div class="col-md-3 col-xs-6">
 							<div class="footer">
 								<h3 class="footer-title">Categories POPULAIRE</h3>
 								<ul class="footer-links">
@@ -32,7 +32,7 @@
 									<li><a href="#">Accessories</a></li>
 								</ul>
 							</div>
-						</div>
+						</div> -->
 
 						<div class="clearfix visible-xs"></div>
 
@@ -40,11 +40,11 @@
 							<div class="footer">
 								<h3 class="footer-title">Information</h3>
 								<ul class="footer-links">
-									<li><a href="#">APROPOS DE NOUS</a></li>
-									<li><a href="#">CONTACER NOUS</a></li>
-									<li><a href="#">REGLEMENT</a></li>
-									<li><a href="#">RECRUTEMENT</a></li>
-									<li><a href="#">Terms & Conditions</a></li>
+									<li><a href="{{url('apropos')}}">APROPOS DE NOUS</a></li>
+									<li><a href="{{url('contact')}}">CONTACER NOUS</a></li>
+									
+									
+									<li><a href="{{url('terme')}}">Terms & Conditions</a></li>
 								</ul>
 							</div>
 						</div>
@@ -53,11 +53,11 @@
 							<div class="footer">
 								<h3 class="footer-title">Service</h3>
 								<ul class="footer-links">
-									<li><a href="#">MON COMPTE</a></li>
-									<li><a href="#">PUBS</a></li>
-									<li><a href="#">PACK BOUTIQUE</a></li>
-									<li><a href="#">SUPPORT</a></li>
-									<li><a href="#">aide</a></li>
+									<li><a href="{{url('connexion')}}">MON COMPTE</a></li>
+									<li><a href="{{url('pubs')}}">PUBS</a></li>
+									<li><a href="{{url('pack')}}">PACK BOUTIQUE</a></li>
+									
+									<li><a href="{{url('contact')}}">aide</a></li>
 								</ul>
 							</div>
 						</div>
@@ -115,9 +115,10 @@
 });
 </script>
 		<!-- jQuery Plugins -->
-		<script src="js/jquery.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script src="js/slick.min.js"></script>
-		<script src="js/nouislider.min.js"></script>
-		<script src="js/jquery.zoom.min.js"></script>
-		<script src="js/main.js"></script>
+		<script src="{{url('js/bootstrap.min.js')}}"></script>
+		<script src="{{url('js/jquery.min.js')}}"></script>
+		
+		<script src="{{url('js/slick.min.js')}}"></script>
+		<script src="{{url('js/nouislider.min.js')}}"></script>
+		<script src="{{url('js/jquery.zoom.min.js')}}"></script>
+		<script src="{{url('js/main.js')}}"></script>

@@ -13,18 +13,20 @@
 
 		<!-- Bootstrap -->
 		<link type="text/css" rel="stylesheet" href="{{url('css/bootstrap.min.css')}}"/>
-
 		<!-- Slick -->
 		<link type="text/css" rel="stylesheet" href="{{url('css/slick.css')}}"/>
 		<link type="text/css" rel="stylesheet" href="{{url('css/slick-theme.css')}}"/>
-
+			
 		<!-- nouislider -->
 		<link type="text/css" rel="stylesheet" href="{{url('css/nouislider.min.css')}}"/>
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link  type="text/css" rel="stylesheet" href="{{ url('css/font-awesome-4.7.0/css/font-awesome.css')}}">
 		<!-- Font Awesome Icon -->
 		
 		
+		
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 		<!-- Custom stlylesheet -->
 		<link type="text/css" rel="stylesheet" href="{{url('css/style.css')}}"/>
 		<link type="text/css" rel="stylesheet" href="{{url('css/styleadditionnel.css')}}"/>

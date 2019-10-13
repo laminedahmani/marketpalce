@@ -70,7 +70,7 @@ class CreateAnnoncesTable extends Migration
 				  
 				  
 		   //foreign id of sub_categorie
-			$table->integer('subcategorie_id')->unsigned();
+			$table->integer('subcategorie_id')->unsigned()->nullable();
 			$table->foreign('subcategorie_id')
 				  ->references('id')
 				  ->on('subcategories')
