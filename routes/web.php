@@ -47,6 +47,7 @@ Route::view('/home', 'home')->middleware('auth');
   Route::post( 'boutique/login', ['as' => 'boutique.login', 'uses' => 'Auth\AuthBoutiqueLoginController@boutiqueLogin' ] );
   Route::post( 'boutique/register', [ 'as' => 'boutique.register', 'uses' => 'Auth\BoutiqueRegisterController@register' ] );
   Route::post('boutique/logout', 'Auth\AuthBoutiqueLoginController@logout')->name('boutique.logout');
+  
 Route::get('modifier/boutique/{id}','BoutiqueController@edit');
   Route::put('modifier/boutique/{id}','BoutiqueController@update');  
 

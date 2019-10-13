@@ -27,7 +27,7 @@ class BoutiqueRequest extends FormRequest
     public function rules()
     {
         return [
-		    'email' => 'email|required|unique:boutiques,email,'.$this->id,
+		    'email' => 'email|unique:membres|required|unique:boutiques,email,'.$this->id,
 		   	'password' => 'required|min:6|confirmed',
 			'password_confirmation' => 'required',
 			'type_magasin' => 'required',
