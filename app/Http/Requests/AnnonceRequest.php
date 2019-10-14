@@ -36,7 +36,7 @@ class AnnonceRequest extends FormRequest
 			'modele' => 'max:60',
 			'etat' => 'required',
 			
-			'quantite' => 'required|numeric',
+			'quantite' => '|numeric',
 			'prix' => 'required|regex:/^\d+(\.\d{1,2})?$/',
 			'autre_images.*' => 'mimes:jpg,jpeg,bmp,png|max:5000',
 			'img_principale' => 'mimes:jpg,jpeg,bmp,png|max:5000',
@@ -46,7 +46,7 @@ class AnnonceRequest extends FormRequest
 	 public function messages()
     {
         return [
-           "autre_images.max" => "Img can't be more than 5."
+           "autre_images.max" => "les photo ne peuvent pas dépacer 5."
         ];
     }
 }

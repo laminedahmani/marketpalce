@@ -56,8 +56,8 @@ Route::get('/marquet/{q}', function ($q) {
   return view('store',['annonces'=>$annonce , 'categories'=>$categories,'annoncevendu'=>$annoncevendu,'wilayas'=>$wilayas]);
 })->name('marquet.show');
 
-  Route::get( '/{cat}', 'AnnonceController@categorie' );
-  Route::get( '/{cat}/{subcat}', 'AnnonceController@subcategorie' );
+  Route::get( '../marquet/{cat}', 'AnnonceController@categorie' );
+  Route::get( 'marquet/{cat}/{subcat}', 'AnnonceController@subcategorie' );
 
 // !marquette route  ------------------------------------------------------------
 
@@ -120,7 +120,7 @@ Route::get('/boutiques/{id}', function ($id) {
 
 // routes statique ------------------------------------------------------
 
-Route::get('/apropos', function () {
+Route::get('/apropos/', function () {
     return view('appropo');
 });
 Route::get('/pack', function () {

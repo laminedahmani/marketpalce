@@ -60,12 +60,12 @@
 												  $subcategories=App\Http\Controllers\AnnonceController::getSubcatLists($categorie->id);
 												
                                                @endphp
-										      <a href="/{{$cat}}">{{$categorie->name}} @if(count($subcategories)>0)<span class='tri'> &#x25B6; </span>@endif</a>
+										      <a href="{{ url('marquet/'.$cat)}}">{{$categorie->name}} @if(count($subcategories)>0)<span class='tri'> &#x25B6; </span>@endif</a>
 											  @if(count($subcategories)>0)
 												   <ul class="dropdown-menu">
 													  @foreach($subcategories as $subcategorie)
 													  @php 	$subcat=str_replace(" ","-",$subcategorie->name); @endphp
-													   <li><a href="/{{$cat}}/{{$subcat}}">• {{$subcategorie->name}}</a></li>
+													   <li><a href="{{ url('marquet/'.$cat.'/'.$subcat)}}">• {{$subcategorie->name}}</a></li>
 													   @endforeach  
 													</ul>
 												@endif
@@ -88,7 +88,7 @@
 							<div class="header-ctn">
 								<!-- Wishlist -->
 								<div class='gr-dt'>
-									<a href="{{url('store/')}}"  >
+									<a href="{{url('marquet/')}}"  >
 										<i class="fa  fa-truck" ></i>
 										<span>Gros</span>
 										<!-- <div class="qty">2</div> -->
@@ -98,7 +98,7 @@
 
 								<!-- Cart -->
 								<div class='gr-dt'>
-									<a href="{{url('store/')}}" >
+									<a href="{{url('marquet/')}}" >
 										<i class="fa fa-shopping-cart"></i>
 										<span>Détails</span>
 										<!-- <div class="qty">3</div> -->
