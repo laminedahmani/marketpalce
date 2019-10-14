@@ -21,7 +21,7 @@ class Categorie extends Model
      * @var array
      */
     protected $fillable = [
-        'name'
+        'name','nbr_annonces','logo_url','titre'
     ];
 	
 	public function annonces()

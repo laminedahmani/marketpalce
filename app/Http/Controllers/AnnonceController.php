@@ -50,7 +50,7 @@ public function index()
 	          $annonce=Annonce::create($request->except(['_token','img_principale','autre_image'])+ ['img_principale' => $custom_file_name,'boutique_id' => auth()->guard('boutique')->user()->id]);
 	      }
 		   if(auth()->guard('membre')->user()){
-	          $annonce=Annonce::create($request->except(['_token','img_principale','autre_image'])+ ['img_principale' => $custom_file_name,'boutique_id' => auth()->guard('membre')->user()->id]);
+	          $annonce=Annonce::create($request->except(['_token','img_principale','autre_image'])+ ['img_principale' => $custom_file_name,'membre_id' => auth()->guard('membre')->user()->id]);
 	      }
 		// save all imgs of this products
 		 $files = $request->file('autre_images');
@@ -132,8 +132,22 @@ public function index()
 		
     }
 	
-	
-	
+	 public static function getSubcatLists($id_categorie)
+    {
+        $subcategories =SubCategorie::where('categorie_id','=',$id_categorie)->get();
+        return $subcategories;
+		
+		
+    }
+		 public static function categorie($cat)
+    {
+		$cat=str_replace("-"," ",$cat);
+        $cats =Categorie::where('name',$cat)->first();
+		$annonces=Annonce::where('categorie_id',$cats->id)->get();
+	//	$annonces=Annonce::all();
+        
+	    return view('store')->with(compact('annonces','cats')) ;
+	  }
 }	
 
 

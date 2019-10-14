@@ -120,13 +120,13 @@
 						<div class="aside">
 							<h3 class="aside-title">Categorie</h3>
 							<div class="checkbox-filter">
-								@foreach( $categories_dfault as $categorie )
+								@foreach( $categories as $categorie )
 								<div class="input-checkbox">
-									 @php 	$cat=str_replace(" ","-",$categorie->name); @endphp
+									
 									<label for="brand-1">
-										<a href="/{{$cat}}"><span>{{ $categorie->name }}</span></a>
+										<a href=""><span>{{ $categorie->name }}</span></a>
 										
-										<small>({{ $categorie->nbr_annonces }})</small>
+										<small>(578)</small>
 									</label>
 								</div>
 								@endforeach
@@ -135,7 +135,7 @@
 						</div>
 						<!-- /aside Widget -->
 
-						<!-- aside Widget{{-- 
+						<!-- aside Widget -->
 						<div class="aside">
 							<h3 class="aside-title">Plus vendus</h3>
 							@foreach( $annoncevendu as $annoncev )
@@ -150,7 +150,7 @@
 								</div>
 							</div>
 							@endforeach
-						--}} -->	
+							
 
 							
 						</div>
@@ -176,9 +176,15 @@
 								</label>
 
 								
-								  {!! Form::select('state_id',$states, null, array('class' => 'form-control','id' => 'state','placeholder' => 'Sélectionner votre wilaya') ) !!}
+									<select class="input-select">
+										<option>wilaya</option>
+										@foreach($wilayas as $wilaya )
+										<option value="{{ $wilaya->id }}"><a href="{{ url('marquet/wilaya='.$wilaya->id ) }}"> {{ $wilaya->nom}}</a></option>
+										@endforeach
+										
+									</select>
 								
-								<button type="submit" class="btn btn-danger">FILTRE</button>
+								<intput type='submit' class="btn btn-danger">FILTRE</intput>
 								</form>
 							</div>
 							<!-- <ul class="store-grid">
@@ -203,7 +209,7 @@
 										</div>
 									</div>
 									<div class="product-body">
-										<p class="product-category">{{ $annonce->categorie->name }}</p>
+										<p class="product-category">Category</p>
 										<h3 class="product-name"><a href="#">{{ $annonce->titre }}</a></h3>
 										<h4 class="product-price">DA {{ $annonce->prix }}  <del class="product-old-price">DA {{ $annonce->prix_solde }} </del></h4>
 										<!-- <div class="product-rating">

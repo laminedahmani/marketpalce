@@ -21,7 +21,7 @@ class SubCategorie extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'categorie_id'
+        'name', 'categorie_id','nbr_annonces','logo_url'
     ];
 
 	

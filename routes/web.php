@@ -16,6 +16,8 @@ use App\State;
 use App\Annonce;
 use App\Photo;
 
+
+
 Route::get('/', function () {
   $annonces=Annonce::orderBy('id','desc')->take(10)->get();
    $annoncevendu=Annonce::orderBy('nbr_vue','desc')->take(10)->get();
@@ -53,6 +55,9 @@ Route::get('/marquet/{q}', function ($q) {
     $wilayas =State::all();
   return view('store',['annonces'=>$annonce , 'categories'=>$categories,'annoncevendu'=>$annoncevendu,'wilayas'=>$wilayas]);
 })->name('marquet.show');
+
+  Route::get( '/{cat}', 'AnnonceController@categorie' );
+  Route::get( '/{cat}/{subcat}', 'AnnonceController@subcategorie' );
 
 // !marquette route  ------------------------------------------------------------
 
@@ -111,6 +116,7 @@ Route::get('/boutiques/{id}', function ($id) {
    
     return view('oneboutique',['boutique'=>$boutique,'seceur'=>$seceur,'wilaya'=>$wilaya,'annonces'=>$annonces]);
 });
+
 
 // routes statique ------------------------------------------------------
 

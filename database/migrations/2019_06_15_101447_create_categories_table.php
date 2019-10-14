@@ -16,6 +16,8 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 155)->nullable();
+		    $table->int('nbr_annonces')->default(0);
+			$table->string('logo_url', 255)->nullable();
 			$table->timestamps();
 			  });
 		

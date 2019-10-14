@@ -16,6 +16,8 @@ class CreateSubcategoriesTable extends Migration
         Schema::create('subcategories', function (Blueprint $table) {
             $table->increments('id');
 			$table->string('name', 255)->nullable();
+			$table->int('nbr_annonces')->default(0);
+			$table->string('logo_url', 255)->nullable();
 			
 		//foreign id of categorie
 			$table->integer('categorie_id')->unsigned();

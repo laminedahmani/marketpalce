@@ -446,7 +446,7 @@
 												</div>
 											</div> 
 											<div class="product-body">
-												<p class="product-category">categorie name</p>
+												<p class="product-category">{{ $annonce->categorie->name }}</p>
 												<h3 class="product-name"><a href="#">{{ $annonce->titre }}</a></h3>
 												<h4 class="product-price">{{ $annonce->prix }} <del class="product-old-price">{{ $annonce->prix_solde }}</del></h4>
 												<!-- <div class="product-rating">
@@ -533,7 +533,7 @@
                                                 </div>
                                             </div> 
                                             <div class="product-body">
-                                                <p class="product-category">categorie name</p>
+                                                <p class="product-category">{{ $annonce->categorie->name }}</p>
                                                 <h3 class="product-name"><a href="#">{{ $annoncev->titre }}</a></h3>
                                                 <h4 class="product-price">{{ $annoncev->prix }} <del class="product-old-price">{{ $annoncev->prix_solde }}</del></h4>
                                                 <!-- <div class="product-rating">
@@ -595,7 +595,7 @@
                                     <img src="{{url('/img_annonces/'.$annoncev->img_principale)}}" alt="">
                                 </div>
                                 <div class="product-body">
-                                    <p class="product-category">Category</p>
+                                    <p class="product-category">{{ $annonce->categorie->name }}</p>
                                     <h3 class="product-name"><a href="#">{{$annoncev->titre}}</a></h3>
                                     <h4 class="product-price">{{$annoncev->prix}} <del class="product-old-price">{{$annoncev->prix_solde}}</del></h4>
                                 </div>
