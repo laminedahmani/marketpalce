@@ -4,9 +4,9 @@
 			<div id="top-header">
 				<div class="container">
 					<ul class="header-links pull-left">
-						<li><a href="#"><i class="fa fa-phone"></i> 0780720416</a></li>
+						<li><a href="#"><i class="fa fa-phone"></i> 0791 52 52 80</a></li>
 						<li><a href="#"><i class="fa fa-envelope-o"></i>contact@grossista.com</a></li>
-						<li><a href="#"><i class="fa fa-map-marker"></i> Alger ...</a></li>
+						<li><a href="#"><i class="fa fa-map-marker"></i> ALGERIA-Alger.</a></li>
 					</ul>
 					<ul class="header-links pull-right">
                         

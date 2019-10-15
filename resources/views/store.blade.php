@@ -37,86 +37,7 @@
 						<!-- aside Widget -->
 						<!-- <div class="aside">
 							<h3 class="aside-title">Categories</h3>
-							<div class="checkbox-filter">
-
-								<div class="input-checkbox">
-									<input type="checkbox" id="category-1">
-									<label for="category-1">
-										<span></span>
-										Laptops
-										<small>(120)</small>
-									</label>
-								</div>
-
-								<div class="input-checkbox">
-									<input type="checkbox" id="category-2">
-									<label for="category-2">
-										<span></span>
-										Smartphones
-										<small>(740)</small>
-									</label>
-								</div>
-
-								<div class="input-checkbox">
-									<input type="checkbox" id="category-3">
-									<label for="category-3">
-										<span></span>
-										Cameras
-										<small>(1450)</small>
-									</label>
-								</div>
-
-								<div class="input-checkbox">
-									<input type="checkbox" id="category-4">
-									<label for="category-4">
-										<span></span>
-										Accessories
-										<small>(578)</small>
-									</label>
-								</div>
-
-								<div class="input-checkbox">
-									<input type="checkbox" id="category-5">
-									<label for="category-5">
-										<span></span>
-										Laptops
-										<small>(120)</small>
-									</label>
-								</div>
-
-								<div class="input-checkbox">
-									<input type="checkbox" id="category-6">
-									<label for="category-6">
-										<span></span>
-										Smartphones
-										<small>(740)</small>
-									</label>
-								</div>
-							</div>
-						</div> -->
-						<!-- /aside Widget -->
-
-						<!-- aside Widget -->
-						<!-- <div class="aside">
-							<h3 class="aside-title">Price</h3>
-							<div class="price-filter">
-								<div id="price-slider"></div>
-								<div class="input-number price-min">
-									<input id="price-min" type="number">
-									<span class="qty-up">+</span>
-									<span class="qty-down">-</span>
-								</div>
-								<span>-</span>
-								<div class="input-number price-max">
-									<input id="price-max" type="number">
-									<span class="qty-up">+</span>
-									<span class="qty-down">-</span>
-								</div>
-							</div>
-						</div> -->
-						<!-- /aside Widget -->
-
-						<!-- aside Widget -->
+							<div class="checkbox-filter"> -->
 						<div class="aside">
 							<h3 class="aside-title">Categorie</h3>
 							<div class="checkbox-filter">
@@ -124,7 +45,7 @@
 								<div class="input-checkbox">
 									 @php 	$cat=str_replace(" ","-",$categorie->name); @endphp
 									<label for="brand-1">
-										<a href="/{{$cat}}"><span>{{ $categorie->name }}</span></a>
+										<a href="{{url('marquet/'.$cat)}}"><span>{{ $categorie->name }}</span></a>
 										
 										<small>({{ $categorie->nbr_annonces }})</small>
 									</label>
@@ -153,7 +74,8 @@
 						--}} -->	
 
 							
-						</div>
+						
+
 						<!-- /aside Widget -->
 					</div>
 					<!-- /ASIDE -->
@@ -162,23 +84,29 @@
 					<div id="store" class="col-md-9">
 						<!-- store top filter -->
 						<div class="store-filter clearfix">
-							<div class="store-sort">
+							<div class="">
 								<form method="get" action="{{ url('marquet/' ) }}">
-									
-								<label>
-									Filtré par:
-									<select class="input-select">
+									<div class="form-row">
+								
+									 <div class="form-group col-md-4">
+									 	<label>
+									Filtré par:  
+									<select class="input-select" name='type_annonce'>
 										<label>Type</label>
-										<option value="grop"><a href="">Gros</a></option>
-										<option value="details"><a href="">Détails</a></option>
-										<option value="grop/détails"><a href="">Gros/Détails</a></option>
+										<option value="grop">Gros</option>
+										<option value="details">Détails</option>
+										<option value="grop/détails">Gros/Détails</option>
 									</select>
 								</label>
+									</div>
 
-								
+								 <div class="form-group col-md-4">
 								  {!! Form::select('state_id',$states, null, array('class' => 'form-control','id' => 'state','placeholder' => 'Sélectionner votre wilaya') ) !!}
-								
+								</div>
+								 <div class="form-group col-md-4">
 								<button type="submit" class="btn btn-danger">FILTRE</button>
+							</div>
+								</div>
 								</form>
 							</div>
 							<!-- <ul class="store-grid">
@@ -220,31 +148,14 @@
 										</div> -->
 									</div>
 									<div class="add-to-cart">
-										<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Voir</button>
+										<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> <a href="{{url('/annonce/'.$annonce->id)}}">Voir</a></button>
 									</div>
+									</a>
 								</div>
-							</a>
+							
 							</div>
 							@endforeach
-							<!-- /product -->
-
-							<!-- product -->
 							
-							<!-- /product -->
-
-							
-							
-							<!-- /product -->
-
-							<!-- product -->
-							
-							<!-- /product -->
-
-							
-
-							<!-- product -->
-							
-							<!-- /product -->
 						</div>
 						<!-- /store products -->
 

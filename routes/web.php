@@ -56,7 +56,7 @@ Route::get('/marquet/{q}', function ($q) {
   return view('store',['annonces'=>$annonce , 'categories'=>$categories,'annoncevendu'=>$annoncevendu,'wilayas'=>$wilayas]);
 })->name('marquet.show');
 
-  Route::get( '../marquet/{cat}', 'AnnonceController@categorie' );
+  Route::get( 'marquet/{cat}', 'AnnonceController@categorie' );
   Route::get( 'marquet/{cat}/{subcat}', 'AnnonceController@subcategorie' );
 
 // !marquette route  ------------------------------------------------------------

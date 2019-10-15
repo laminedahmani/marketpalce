@@ -148,6 +148,17 @@ public function index()
         
 	    return view('store')->with(compact('annonces','cats')) ;
 	  }
+
+      // provisoirement pour ne pas appaitre le bug
+      public static function subcategorie($cat)
+    {
+        $cat=str_replace("-"," ",$cat);
+        $cats =Categorie::where('name',$cat)->first();
+        $annonces=Annonce::where('categorie_id',$cats->id)->get();
+    //  $annonces=Annonce::all();
+        
+        return view('store')->with(compact('annonces','cats')) ;
+      }
 }	
 
 
