@@ -1,17 +1,3 @@
-
-<?php 
-use App\Boutique;
-use App\Categorie;
-use App\State;
-use App\Annonce;
-use App\Photo;
-
-$id=auth()->guard('boutique')->user()->id;
-
-$boutique=Boutique::find($id);
-$annonces=Annonce::where('boutique_id',$id)->get();
-
- ?>
 @extends('layouts.dash')
 
 @section('content')
@@ -44,8 +30,8 @@ $annonces=Annonce::where('boutique_id',$id)->get();
         <div class="col-md-3 col-sm-6">
             <div class="product-grid2">
                 <div class="product-image2">
-                    <a href="{{ url('/annonce/'.$annonce->id)}}">
-                        <img class="pic-1" src="{{ url('/img_annonces/'.$annonce->img_principale) }}">
+                    <a href="{{ url('/annonce/'.$annonce->id)}}" target="_blank">
+                        @if($annonce->img_principale!=null)<img class="pic-1" src="{{url('/img_annonces/'.$annonce->img_principale)}}" alt="">@else <img src="{{url('/img_annonces/default-collect-picture.jpg')}}" class="pic-1" alt=""> @endif
                          <img class="pic-2" src="{{ url('/img/voir.png') }}">
                     </a>
                     <ul class="social">
@@ -65,9 +51,50 @@ $annonces=Annonce::where('boutique_id',$id)->get();
         @endforeach
        
         @endif
+		
+		
+		
+
+		
+		
+		
     </div>
     
+		    <!--Paginator view-->	
+				<?php
+				// config
+				$link_limit = 4; // maximum number of links (a little bit inaccurate, but will be ok for now)
+				?>
 
+				@if ($annonces->lastPage() > 1)
+					
+						   <ul class="store-pagination">
+						  <li><a href="{{ $annonces->url(1) }}"><i class="fa fa-angle-left"></i></a></li>
+						@for ($i = 1; $i <= $annonces->lastPage(); $i++)
+							<?php
+							$half_total_links = floor($link_limit / 2);
+							$from = $annonces->currentPage() - $half_total_links;
+							$to = $annonces->currentPage() + $half_total_links;
+							if ($annonces->currentPage() < $half_total_links) {
+							   $to += $half_total_links - $annonces->currentPage();
+							}
+							if ($annonces->lastPage() - $annonces->currentPage() < $half_total_links) {
+								$from -= $half_total_links - ($annonces->lastPage() - $annonces->currentPage()) - 1;
+							}
+							?>
+							@if ($from < $i && $i < $to)
+								
+									<li class="{{ ($annonces->currentPage() == $i) ? ' active' : '' }}"><a  href="{{$annonces->url($i)}}" >{{ $i }}</a></li>
+								
+							@endif
+						@endfor
+						
+						
+						<li><a href="{{ $annonces->url($annonces->lastPage()) }}"><i class="fa fa-angle-right" style="margin-height:25px"></i></a></li>
+						</ul>
+						
+		
+				@endif
 
 
 @stop

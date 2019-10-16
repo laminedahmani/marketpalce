@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\State;
 use App\Categorie;
 use App\Boutique;
+use App\Annonce;
+use App\Photo;
+
 class BoutiqueController extends Controller
 {
     /**
@@ -15,7 +18,10 @@ class BoutiqueController extends Controller
      */
     public function index()
     {
-         return view('boutique.homeboutique');
+		$id=auth()->guard('boutique')->user()->id;
+        $boutique=Boutique::find($id);
+		$annonces=Annonce::where('boutique_id',$id)->paginate(2);
+         return view('boutique.homeboutique')->with(compact('annonces')) ;;
     }
 
     /**
@@ -46,9 +52,10 @@ class BoutiqueController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-     
-        
+    {   
+        $boutique=Boutique::find($id);
+        $annonces=Annonce::where('boutique_id',$id)->paginate(2);
+        return view('oneboutique')->with(compact('annonces','boutique')) ;
     }
 
     /**
@@ -65,8 +72,8 @@ class BoutiqueController extends Controller
         $value_cat= Categorie::find($boutiques->secteur_activite);
 
         $states = State::all(['code', 'nom'])->pluck('nom', 'code');
-        $categories = Categorie::all(['id', 'name'])->pluck('name', 'id');;
-        return view('boutique/boutiqueinfo',['categories'=>$categories ,'states'=>$states ,'boutiques'=>$boutiques,'value_state'=>$value_state , 'value_cat'=>$value_cat->id]);
+        $categories = Categorie::all(['name', 'name'])->pluck('name', 'name');
+        return view('boutique/boutiqueinfo',['boutiques'=>$boutiques,'categories'=>$categories]);
     }
 
     /**

@@ -39,7 +39,7 @@ Route::get('/annonce/{id}', function ($id) {
 
 
 // page marquet routes -----------------------------------------------------------
-
+/*
 Route::get('/marquet/', function () {
     $annoncevendu=Annonce::orderBy('nbr_vue','desc')->take(4)->get();
     $annonce=Annonce::all();
@@ -55,8 +55,9 @@ Route::get('/marquet/{q}', function ($q) {
     $wilayas =State::all();
   return view('store',['annonces'=>$annonce , 'categories'=>$categories,'annoncevendu'=>$annoncevendu,'wilayas'=>$wilayas]);
 })->name('marquet.show');
-
-  Route::get( '../marquet/{cat}', 'AnnonceController@categorie' );
+*/
+  Route::get( 'marquet/filtre', 'AnnonceController@filtre' )->name('filtre'); //filtre market
+  Route::get( 'marquet/{cat}', 'AnnonceController@categorie' );
   Route::get( 'marquet/{cat}/{subcat}', 'AnnonceController@subcategorie' );
 
 // !marquette route  ------------------------------------------------------------
@@ -96,7 +97,7 @@ Route::get('modifier/boutique/{id}','BoutiqueController@edit');
 
 Route::middleware('auth:membre')->get('membre', 'MembreController@index')->name('membre');
 Route::middleware('auth:boutique')->get('boutique', 'BoutiqueController@index')->name('boutique');
-Route::get('modifier/boutique/{id}','BoutiqueController@edit');
+
 
 //-----Routes Annonce 
 
@@ -108,14 +109,7 @@ Route::get('get-categorie-list','AnnonceController@getSubcatList');
 
 
 //public routes 
-Route::get('/boutiques/{id}', function ($id) {
-   $boutique=Boutique::find($id);
-   $seceur=Categorie::find($boutique->secteur_activite);
-   $wilaya=State::find($boutique->state_id);
-   $annonces=Annonce::where('boutique_id',$id)->get();
-   
-    return view('oneboutique',['boutique'=>$boutique,'seceur'=>$seceur,'wilaya'=>$wilaya,'annonces'=>$annonces]);
-});
+Route::get('/boutiques/{id}',  'BoutiqueController@show');
 
 
 // routes statique ------------------------------------------------------

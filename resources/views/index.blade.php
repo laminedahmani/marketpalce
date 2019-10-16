@@ -439,7 +439,7 @@
 										<div class="product">
                                             <a href="{{url('/annonce/'.$annonce->id)}}">
 											 <div class="product-img">
-												<img src="{{url('/img_annonces/'.$annonce->img_principale)}}" alt="">
+											@if($annonce->img_principale!=null)<img  src="{{url('/img_annonces/'.$annonce->img_principale)}}" alt="">@else <img src="{{url('/img_annonces/default-collect-picture.jpg')}}" alt=""> @endif    
 												<div class="product-label">
 													
 													<span class="new">NEW</span>
@@ -526,7 +526,7 @@
                                         <div class="product">
                                             <a href="{{url('/annonce/'.$annonce->id)}}">
                                              <div class="product-img">
-                                                <img src="{{url('/img_annonces/'.$annoncev->img_principale)}}" alt="">
+                                              @if($annonce->img_principale!=null)<img  src="{{url('/img_annonces/'.$annonce->img_principale)}}" alt="">@else <img src="{{url('/img_annonces/default-collect-picture.jpg')}}" alt=""> @endif    
                                                 <div class="product-label">
                                                     
                                                     <span class="new">NEW</span>
@@ -592,7 +592,7 @@
 								@foreach( $annoncevendu as $annoncev )
                             <div class="product-widget">
                                 <div class="product-img">
-                                    <img src="{{url('/img_annonces/'.$annoncev->img_principale)}}" alt="">
+                                 @if($annonce->img_principale!=null)<img  src="{{url('/img_annonces/'.$annonce->img_principale)}}" alt="">@else <img src="{{url('/img_annonces/default-collect-picture.jpg')}}" alt=""> @endif    
                                 </div>
                                 <div class="product-body">
                                     <p class="product-category">{{ $annonce->categorie->name }}</p>

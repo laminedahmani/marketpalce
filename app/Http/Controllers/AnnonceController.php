@@ -52,9 +52,17 @@ public function index()
 		   if(auth()->guard('membre')->user()){
 	          $annonce=Annonce::create($request->except(['_token','img_principale','autre_image'])+ ['img_principale' => $custom_file_name,'membre_id' => auth()->guard('membre')->user()->id]);
 	      }
+		  $cats =Categorie::find($request->categorie_id);
+		  $subcats =SubCategorie::find($request->subcategorie_id);
+		  $cats->nbr_annonces=	$cats->nbr_annonces+1;
+		  $subcats->nbr_annonces=	$subcats->nbr_annonces+1;
+		  
+		  $cats->save();	
+		  $subcats->save();	
+		  
 		// save all imgs of this products
 		 $files = $request->file('autre_images');
-		if(count($files)>0){
+		if ($request->hasFile('autre_images')) {
 			   foreach ($files as $photo) {
 					$custom_file_name2 = 'img_autres'.time().'-'.$photo->getClientOriginalName(); // customer the name of img uploded 
 					$photo->move('Img_annonces/', $custom_file_name2);  // save img ine the folder Public/Avatars
@@ -142,12 +150,57 @@ public function index()
 		 public static function categorie($cat)
     {
 		$cat=str_replace("-"," ",$cat);
+		$retour=$cat;
+		
         $cats =Categorie::where('name',$cat)->first();
-		$annonces=Annonce::where('categorie_id',$cats->id)->get();
-	//	$annonces=Annonce::all();
-        
-	    return view('store')->with(compact('annonces','cats')) ;
+		$id_cat=$cats->id;
+		$id_subcat=0;
+    	$annonces=Annonce::where('categorie_id',$cats->id)->paginate(2);
+     	return view('store')->with(compact('annonces','retour','id_cat','id_subcat')) ;
+
 	  }
+		 public static function subcategorie($cat,$subcat)
+    {
+		$cat=str_replace("-"," ",$cat);
+		$subcat=str_replace("-"," ",$subcat);
+		$retour=$subcat;
+        $cats =Categorie::where('name',$cat)->first();
+		$subcats =SubCategorie::where('name',$subcat)->first();
+		$id_subcat=$subcats->id;
+		$id_cat=0;
+		$annonces=Annonce::where('categorie_id',$cats->id)->where('subcategorie_id',$subcats->id)->paginate(2);
+	    return view('store')->with(compact('annonces','retour','id_cat','id_subcat')) ;
+	  }
+	  
+	      public function filtre(Request $request)
+    {
+		if($request->categorie==0){
+		$annonces =Annonce::
+			when($request->state_id, function ($query) use ($request) {
+				$query->where('state_id', '=', $request->state_id);
+			})->
+			when($request->subcategorie, function ($query) use ($request) {
+				$query->where('subcategorie_id', '=', $request->subcategorie);
+			})->
+			when($request->type_annonce, function ($query) use ($request) {
+				$query->where('type_annonce', '=', $request->type_annonce);
+			})	->paginate(2);
+		}else{
+			$annonces =Annonce::
+			when($request->state_id, function ($query) use ($request) {
+				$query->where('state_id', '=', $request->state_id);
+			})->
+			when($request->subcategorie, function ($query) use ($request) {
+				$query->where('categorie_id', '=', $request->categorie);
+			})->
+			when($request->type_annonce, function ($query) use ($request) {
+				$query->where('type_annonce', '=', $request->type_annonce);
+			})	->paginate(2);
+		}
+       $id_cat=$request->categorie;
+	   $id_subcat=$request->subcategorie;
+		 return view('store')->with(compact('annonces','id_cat','id_subcat')) ;
+    }
 }	
 
 
