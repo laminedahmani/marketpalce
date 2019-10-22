@@ -73,7 +73,7 @@
             <div class="form-row">
             <div class="form-group col-md-4">
               <label for="inputState">wilaya</label>
-              {!! Form::select('state_id',$states, $value_state->id, array('class' => 'form-control','id' => 'state','placeholder' => 'Sélectionner votre wilaya') ) !!}
+              {!! Form::select('state_id',$states, $boutiques->state_id, array('class' => 'form-control','id' => 'state','placeholder' => 'Sélectionner votre wilaya') ) !!}
 			  @if ($errors->boutique->has('state_id'))
 				<span class="alert-danger">
 				   <strong>{{ $errors->boutique->first('state_id') }}</strong>
@@ -104,7 +104,7 @@
             <div class="form-group col-md-4">
               <label for="inputState">pack</label>
               
-			   {!! Form::select('pack',[1=>"Pack 1",2=>"Pack 2",3=>"Pack 3"],$boutiques->pack, array('class' => 'form-control','id' => 'pack','placeholder' => "Sélectionner votre pack") ) !!}
+			   {!! Form::select('pack',[1=>"Pack 1",2=>"Pack 2",3=>"Pack 3"],$boutiques->pack, array('class' => 'form-control','id' => 'pack','placeholder' => "Sélectionner votre pack","disabled"=>true) ) !!}
 			   @if ($errors->boutique->has('pack'))
 				<span class="alert-danger">
 				   <strong>{{ $errors->boutique->first('pack') }}</strong>
@@ -124,7 +124,7 @@
             </div>
 			<div class="form-group col-md-4">
             <label for="inputState">Secteur d'activité</label>
-			 {!! Form::select('secteur_activite',$categories,$value_cat, array('class' => 'form-control','id' => 'secteur_activite','placeholder' => "Type d'activité") ) !!}
+			 {!! Form::select('secteur_activite',$categories,$boutiques->	secteur_activite, array('class' => 'form-control','id' => 'secteur_activite','placeholder' => "Type d'activité") ) !!}
 			 @if ($errors->boutique->has('secteur_activite'))
 				<span class="alert-danger">
 				   <strong>{{ $errors->boutique->first('secteur_activite') }}</strong>

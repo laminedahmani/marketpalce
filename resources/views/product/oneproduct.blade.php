@@ -21,6 +21,9 @@
 								<img src="{{ url('/img_annonces/'.$photo->url_photo) }}" alt="">
 							</div>
 							@endforeach
+							@if(count($photos)==0)
+								<img src="{{url('/img_annonces/default-collect-picture.jpg')}}"  alt="">
+							@endif
 						
 						</div>
 					</div>

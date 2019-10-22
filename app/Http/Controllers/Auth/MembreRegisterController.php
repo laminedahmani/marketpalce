@@ -41,7 +41,7 @@ class MembreRegisterController extends Controller
 
 	   public function showRegistrationForm() {
 			// get array of all state code, name of state
-            $categories = Categorie::all(['id', 'name'])->pluck('name', 'id');
+            $categories = Categorie::all(['name', 'name'])->pluck('name', 'name');
 			$states = State::all(['code', 'nom'])->pluck('nom', 'code');
 			return view( 'inscriptionB',['states'=>$states ,'categories'=>$categories] );
 			  

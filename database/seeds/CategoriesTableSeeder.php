@@ -20,7 +20,7 @@ class CategoriesTableSeeder extends Seeder
 		  array('id' => '5','name' => 'Alimentation','titre' =>'Alimentation et Agriculture'),
 		  array('id' => '6','name' => 'Elevage et Animaux','titre' =>'Alimentation et Agriculture'),
 		  array('id' => '8','name' => 'Télécommunication','titre' =>'Telecommunication et Equipement electrique'),
-		  array('id' => '9','name' => 'Matériel e électrique','titre' =>'Telecommunication et Equipement electrique'),
+		  array('id' => '9','name' => 'Matériele électrique','titre' =>'Telecommunication et Equipement electrique'),
 		  array('id' => '10','name' => 'Composant électrique','titre' =>'Telecommunication et Equipement electrique'),
 		  array('id' => '11','name' => 'Moteur','titre' =>'Telecommunication et Equipement electrique'),
 		  array('id' => '12','name' => 'Beauté','titre' =>'Beauté et santé'),

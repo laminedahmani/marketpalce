@@ -115,16 +115,29 @@
 							</ul> -->
 						</div>
 						<!-- /store top filter -->
-
+						@if( count($annonces)==0 )
+								 <div class="alert alert-danger" role="alert">
+							        @isset($retour)
+									      Infos! Accune annonce trouver pour la catégorie @isset($retour)  <strong>{{ $retour }} </strong> @endisset 
+									@else
+									     <strong>Infos!</strong>   Accune annonce trouver pour cette rercherche
+									@endisset  
+								</div>
+						   @endif
+                        </div>
+                   
 						<!-- store products -->
 						<div class="row">
+						
+						
+						
 							<!-- product -->
 							@foreach( $annonces as $annonce )
 							<div class="col-md-4 col-xs-6">
 								<div class="product">
 									<a href="{{url('/annonce/'.$annonce->id)}}">
 									<div class="product-img">
-										<img src="{{url('/img_annonces/'.$annonce->img_principale)}}" alt="">
+										@if($annonce->img_principale!=null)<img src="{{url('/img_annonces/'.$annonce->img_principale)}}" alt="">@else <img src="{{url('/img_annonces/default-collect-picture.jpg')}}" alt=""> @endif
 										<div class="product-label">
 											<!-- <span class="sale">-30%</span>
 											<span class="new">NEW</span> -->
@@ -155,21 +168,59 @@
 							
 							</div>
 							@endforeach
-							
+
 						</div>
 						<!-- /store products -->
 
 						<!-- store bottom filter -->
 						<div class="store-filter clearfix">
-							<!-- <span class="store-qty">Showing 20-100 products</span> -->
-							<ul class="store-pagination">
+                          
+								     <!--Paginator view-->	
+						 <!--	<ul class="store-pagination">
 								<li class="active">1</li>
 								<li><a href="#">2</a></li>
 								<li><a href="#">3</a></li>
 								<li><a href="#">4</a></li>
 								<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-							</ul>
-						</div>
+							</ul>-->
+							
+							     <!--Paginator view-->	
+								<?php
+								// config
+								$link_limit = 4; // maximum number of links (a little bit inaccurate, but will be ok for now)
+								?>
+
+								@if ($annonces->lastPage() > 1)
+									
+										   <ul class="store-pagination">
+										  <li><a href="{{ $annonces->url(1) }}"><i class="fa fa-angle-left"></i></a></li>
+										@for ($i = 1; $i <= $annonces->lastPage(); $i++)
+											<?php
+											$half_total_links = floor($link_limit / 2);
+											$from = $annonces->currentPage() - $half_total_links;
+											$to = $annonces->currentPage() + $half_total_links;
+											if ($annonces->currentPage() < $half_total_links) {
+											   $to += $half_total_links - $annonces->currentPage();
+											}
+											if ($annonces->lastPage() - $annonces->currentPage() < $half_total_links) {
+												$from -= $half_total_links - ($annonces->lastPage() - $annonces->currentPage()) - 1;
+											}
+											?>
+											@if ($from < $i && $i < $to)
+												
+													<li class="{{ ($annonces->currentPage() == $i) ? ' active' : '' }}"><a  href="{{$annonces->url($i)}}" >{{ $i }}</a></li>
+												
+											@endif
+										@endfor
+										
+										
+										<li><a href="{{ $annonces->url($annonces->lastPage()) }}"><i class="fa fa-angle-right" style="margin-height:25px"></i></a></li>
+										</ul>
+										
+						
+								@endif
+							
+						   </div>
 						<!-- /store bottom filter -->
 					</div>
 					<!-- /STORE -->
