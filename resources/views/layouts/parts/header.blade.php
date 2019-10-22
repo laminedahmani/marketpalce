@@ -7,6 +7,10 @@
 						<li><a href="#"><i class="fa fa-phone"></i> 0791 52 52 80</a></li>
 						<li><a href="#"><i class="fa fa-envelope-o"></i>contact@grossista.com</a></li>
 						<li><a href="#"><i class="fa fa-map-marker"></i> ALGERIA-Alger.</a></li>
+						<li><a href="https://www.facebook.com/Grossista-%D8%AD%D8%A7%D9%86%D9%88%D8%AA%D9%83-1713725245395180/"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+						<li><a href="https://instagram.com/gros_sistaa?igshid=nfchz7roh3hh"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+						
+
 					</ul>
 					<ul class="header-links pull-right">
                         
